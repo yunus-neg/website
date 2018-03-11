@@ -1,0 +1,50 @@
+body {
+    background-color: #f4f4f4;
+    direction: rtl;
+}
+
+.header {
+    background: url("../img/about-bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.title-arabic {
+    font-family: 'Changa', sans-serif;
+    color: #fdfdfd;
+    text-shadow: 0px 0px 4px #2c2c2c;
+}
+
+.subtitle-arabic {
+    font-family: 'Changa',sans-serif;
+}
+
+.cloudsystem-navbar {
+    background-color: #1963d6;
+}
+
+.about-title {
+    font-family: 'El Messiri', sans-serif;
+}
+
+.three {
+    background-color: #e4e4e4;
+}
+
+.icon {
+    font-size: 6rem;
+    color: #1963d6;
+}
+
+.contact-text {
+    font-family: 'sans-serif','Harmattan';
+}
+
+.footer {
+    background-color: #2c2c2c;
+    color: #e4e4e4;
+    font-family: 'El Messiri', sans-serif;
+    height: 40px;
+}
