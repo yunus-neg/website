@@ -23,29 +23,29 @@
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS5SURBVGhD7VhbT1xVFEYfjA8an0xM1MQ/4Ksm+sBD58acw8DA3jNcLMzItOWSthJMiwIFWrAYi1qTqrUxwXgjFkNbW6SWak1Te1GkUIECLdOBKaXlDgWsNS7XnrPPmTNwhtBxmCHmfMkXCPuctb5vr7332pwEHTp06NChQ4eO/zESKX3MIBCbUSTlRpF+YBRII/7+iUkku02iI9ViIU/yR9cnjMmOl1HwcRT/p0mksALvo6kTRjHdxF9dHzClOJ9lwtRizckO8BQUw443q6Gsci+U7NwF7s1bA39XP2cSyGlzivM5Hip+YLOKVbgjC9tcVAItrafh9u0JWFy8r3Byag6Ghkeg9+oAfPFVE7y6ZbtiBt+fYUuRh4w9AvtAIH8zMXaHC062/QwLC3+FGFBzfv4ejI6Ogc/nhxs3huHLxiawkY2yIbbcnDx07GC0pr9oFOg8E5GX/xp4vTc1xWtxfHw6YIbx4qUOyHbnS5URyD2TNf0lnmLtkZiY+yguh2ss+SvuAvD7RzUFr8QpXGqymY6OLnBu3MQrQ/w2m+1xnmptgTNXw5ImpWRAT+91TaGrodrMqbYzykFgtJKDZoFWYZ4jJoGeMVnJYZZTEHKe5hL+O9hs4azdZQkPHGzQFPggHBubUsyUVtTwqoQnGhqxCE7K5UQOg0g8LKA1NXPZyRQpR0buwMeHPgOLzRki2mxzgGDPBMvSI5uNifQCpfQRLuvBgTPyAwtUVbNPU1QkrN//kSLQ7siFPW/VQ3dPf2BsYmImUK1z53+Dsl21S0yRWxGbkXtG87HWZYIiZba7MCCsvGovCp9dNj41fVdZft29/ZCZu0UxY0yml7m01UPq4FKAy509yxJGyqt9Xmj78eyKPUi9l7zeIchyFShmNoikkEsMj8rKyoexhG6sxEV8CZuW9HKqIwdq394Pff1ezcTRJjM57L+lmOnruw5JtgxuhsxwudqwWulTeBc6L4vXojU1AxoPH9VMHm2qGyljTd27QR3hGqnBQJ/Ajd0tP/h6aRV8f/InuPJHH/za3gUNn38DjmyPEuiXC+2ayaPJubnFECOdXT3s9JI0WOnXXHoosBEdYg+wJtXU3KIZmM0Qu9nSLA/0D/g0n4k21UYYBXtWwAhO+iUuPQiLxf4MDgQug9FoetEku0GrjaRluKSKCOQalx8EbuxCNiimZQVOC62A8aLaBGO2SzqKceIbufwg0MiHbHBbSZlmsHhx6R4ZGBgEUV5aIi3m8oPA46yBDZaW79EMGC/KXV7mt83HpWWF3JBEnufyg8CK1LHBnLwizYDxIvt3QTbBmqJr01ZuhPRw6aHAa7NFdtr++xXNoLHm5ORsSDX2vXdAqQbuD8Klh4JdxHDQyx7Ky98O4xPTmsFjxdnZBRgauqlUov794CUTT6tjKPkhSbkG0IgdH/xHNhOvykxPz4MPTQwO+uDod63gyS9WVYJ2ssbNJYcHmnlDNsOY4ykKNMDq2vo1Z1XNO1BRXQc7y3ZDwbYd6o8UEgXasioTMtAMxfL5QoLEkwIZNCTTTHaZ5RJXD/axwWxNT5M+f9IjeKqdihXxRDqBPz/FvBVo4gWUE34/6NChQ4cOHTp0rFckJPwL4qQcu4ZL4ykAAAAASUVORK5CYII=">
       </a>
     </div>
+    <div class="breif">
+      <strong>تواصل معنا:</strong> أبوابنا مُشرعة لأيّ تواصل؛ يُمكنك دائمًا الاستفسار وطلب أيّ خدمة.
+    </div>
     <div class="form-container">
-      <h2>
-        تواصل معنا
-      </h2>
-      <form>
+      <form id="form">
         <div class="form-input">
-          <label for="name">الاسم الكامل (مطلوب)</label>
-          <input type="text" id="name" placeholder="خالد الناصر" required />
+          <label for="fullName">الاسم الكامل (مطلوب)</label>
+          <input type="text" id="fullName" placeholder="خالد الناصر" required />
         </div>
         <div class="form-input">
           <label for="email">البريد الإلكترونيّ (مطلوب)</label>
           <input type="email" id="email" placeholder="example@example.com" required />
         </div>
         <div class="form-input">
-          <label for="name">الموضوع (مطلوب)</label>
+          <label for="subject">الموضوع (مطلوب)</label>
           <input type="text" id="subject" placeholder="بخصوص الحلول السحابيّة" required />
         </div>
         <div class="form-input">
-          <label for="name">الرسالة (مطلوب)</label>
+          <label for="message">الرسالة (مطلوب)</label>
           <textarea id="message" placeholder="نصّ الرسالة مفصّلاً" required></textarea>
         </div>
         <div class="form-buttons">
-          <input type="submit" class="submit" value="إرسال" />
+          <input type="submit" id="submit" class="submit" value="إرسال" />
         </div>
       </form>
     </div>
@@ -53,5 +53,49 @@
       (ح) جميع الحقوق محفوظة لمؤسّسة أنظمة غيمة (Cloud Systems).
     </div>
   </div>
+  <script type="text/javascript">
+
+    // Define some variables.
+    var form = document.getElementById('form');
+    var fullName = document.getElementById('fullName');
+    var email = document.getElementById('email');
+    var subject = document.getElementById('subject');
+    var message = document.getElementById('message');
+    var submit = document.getElementById('submit');
+
+    // Define variables to be used to send a request.
+    var http = new XMLHttpRequest();
+    var url = 'https://ep0j70w8oc.execute-api.us-east-1.amazonaws.com/dev/contact-us';
+
+    http.open('POST', url, true);
+
+    // Set some headers.
+    http.setRequestHeader('Content-type', 'application/json');
+    http.setRequestHeader('Accept', 'application/json');
+
+    http.onreadystatechange = function() {
+      console.log(http.readyState, http.status);
+      submit.disabled = false;
+      if (http.readyState == XMLHttpRequest.DONE && http.status == 200) {
+          // Request finished. Do processing here.
+      }
+    }
+
+    var handleSubmit = function(event) {
+      event.preventDefault();
+      submit.disabled = true;
+      // Make a new request.
+      var params = JSON.stringify({
+        'name': fullName.value,
+        'email': email.value,
+        'subject': subject.value,
+        'message': message.value,
+      });
+      http.send(params);
+    }
+
+    // Start dealing with them.
+    form.addEventListener('submit', handleSubmit, false);
+  </script>
 </body>
 </html>

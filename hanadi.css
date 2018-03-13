@@ -100,12 +100,6 @@ h2, strong{
   /*border-bottom: 1px solid #ccc; margin-bottom: 20px;*/
 }
 
-.actions ul li a{
-  padding: 10px; text-decoration: none; color: #fff;
-  /*border: 1px solid #ccc;*/ background-color: #32c24d;
-  border-radius: 4px; font-family: 'Dubai-Bold', sans-serif;
-}
-
 .form-input{
   padding-bottom: 10px;
 }
@@ -116,7 +110,7 @@ h2, strong{
 
 .form-input input[type="text"], .form-input input[type="email"], textarea{
   width: 100%; box-sizing: border-box;
-  border: 1px solid #ccc; padding: 10px;
+  border: 1px solid #ccc; padding: 6px;
   font-size: 16px; line-height: initial;
 }
 
@@ -132,6 +126,10 @@ h2, strong{
   padding: 10px; text-decoration: none; color: #fff;
   border: 0; background-color: #32c24d; cursor: pointer;
   border-radius: 4px; font-family: 'Dubai-Bold', sans-serif;
+}
+
+.form-buttons input[type="submit"]:disabled{
+  background-color: #ccc; cursor: default;
 }
 
 .form-input input[type="text"]:invalid, .form-input input[type="email"]:invalid, textarea:invalid{
