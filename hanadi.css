@@ -92,6 +92,37 @@ h2, strong{
   margin-bottom: 20px; text-align: center;
 }
 
+.form-container h2{
+  text-align: center; padding-bottom: 20px;
+  /*border-bottom: 1px solid #ccc; margin-bottom: 20px;*/
+}
+
+.actions ul li a{
+  padding: 10px; text-decoration: none; color: #fff;
+  /*border: 1px solid #ccc;*/ background-color: #32c24d;
+  border-radius: 4px; font-family: 'Dubai-Bold', sans-serif;
+}
+
+.form-input{
+  padding-bottom: 10px;
+}
+
+.form-input label{
+  display: block; padding-bottom: 6px;
+}
+
+.form-input input[type="text"], .form-input input[type="email"], textarea{
+  width: 100%; box-sizing: border-box;
+  border: 1px solid #ccc; padding: 10px;
+  font-size: 16px;
+}
+
+.form-buttons input[type="submit"]{
+  padding: 10px; text-decoration: none; color: #fff;
+  border: 0; background-color: #32c24d; cursor: pointer;
+  border-radius: 4px; font-family: 'Dubai-Bold', sans-serif;
+}
+
 /* For large screens. */
 @media (min-width: 768px){
   .container {
