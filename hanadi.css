@@ -4,6 +4,9 @@
 *{
   margin: 0; padding: 0; line-height: 1.5;
   font-family: 'Dubai-Regular', sans-serif;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 html {
@@ -61,7 +64,7 @@ h2, strong{
   /*background-color: yellow;*/
   width: 33%; display: inline-block;
   margin: 0; padding: 0; border: 10px solid #fff;
-  box-sizing: border-box; text-align: center;
+  text-align: center;
 }
 
 .feature p{
@@ -114,7 +117,15 @@ h2, strong{
 .form-input input[type="text"], .form-input input[type="email"], textarea{
   width: 100%; box-sizing: border-box;
   border: 1px solid #ccc; padding: 10px;
-  font-size: 16px;
+  font-size: 16px; line-height: initial;
+}
+
+.form-input input[type="text"]::-webkit-contacts-auto-fill-button, .form-input input[type="email"]::-webkit-contacts-auto-fill-button{
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
 }
 
 .form-buttons input[type="submit"]{
