@@ -1,0 +1,121 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css);
+@import url(https://cdn.rawgit.com/rtaibah/dubai-font-cdn/master/dubai-font.css);
+
+*{
+  margin: 0; padding: 0; line-height: 1.5;
+  font-family: 'Dubai-Regular', sans-serif;
+}
+
+html {
+  direction: rtl;
+}
+
+nav{
+  background-color: #e1e1e1;
+  padding: 10px; text-align: center;
+}
+
+nav ul{
+  list-style-type: none;
+}
+
+nav ul li{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+nav ul li a{
+  color: #666;
+}
+
+.container{
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h2, strong{
+  font-family: 'Dubai-Bold', sans-serif;
+  font-weight: normal;
+}
+
+.logo{
+  text-align: center;
+  padding: 40px;
+  padding-bottom: 20px;
+}
+
+.breif{
+  text-align: center;
+  padding: 10px;
+  margin: 30px;
+  margin-top: 0;
+}
+
+.features {
+  /*color: red;*/
+}
+
+.feature {
+  /*background-color: yellow;*/
+  width: 33%; display: inline-block;
+  margin: 0; padding: 0; border: 10px solid #fff;
+  box-sizing: border-box; text-align: center;
+}
+
+.feature p{
+  margin-top: 10px;
+}
+
+.actions{
+  padding: 40px; text-align: center;
+}
+
+.actions ul{
+  list-style-type: none;
+}
+
+.actions ul li{
+  display: inline-block;
+}
+
+.actions ul li a{
+  padding: 10px; text-decoration: none; color: #fff;
+  /*border: 1px solid #ccc;*/ background-color: #32c24d;
+  border-radius: 4px; font-family: 'Dubai-Bold', sans-serif;
+}
+
+.copyrights{
+  margin-top: 20px; border-top: 1px solid #ccc;
+  color: #ccc; font-size: 14px; padding-top: 10px;
+  margin-bottom: 20px; text-align: center;
+}
+
+/* For large screens. */
+@media (min-width: 768px){
+  .container {
+    width: 750px;
+  }
+}
+
+/* For small screens. */
+@media (max-width: 400px){
+  .logo{
+    padding: 30px;
+    padding-bottom: 10px;
+  }
+  .breif{
+    margin: 10px;
+    margin-top: 0;
+  }
+  .feature {
+    width: 100%;
+  }
+  .actions{
+    padding: 20px;
+  }
+  .copyrights{
+    font-size: 12px;
+  }
+}
