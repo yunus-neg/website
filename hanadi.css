@@ -122,6 +122,10 @@ h2, strong{
   right: 0;
 }
 
+.form-buttons{
+  text-align: center;
+}
+
 .form-buttons input[type="submit"]{
   padding: 10px; text-decoration: none; color: #fff;
   border: 0; background-color: #32c24d; cursor: pointer;
@@ -144,6 +148,10 @@ h2, strong{
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 24px 24px;
+}
+
+.error{
+  background-color: #ffeb3b;
 }
 
 /* For large screens. */

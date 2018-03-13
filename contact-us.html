@@ -10,6 +10,9 @@
   <title>أنظمة غيمة - Cloud Systems</title>
 </head>
 <body>
+  <nav id="error-message" class="error">
+    Something went wrong!
+  </nav>
   <nav>
     <ul>
       <li>
@@ -45,7 +48,7 @@
           <textarea id="message" placeholder="نصّ الرسالة مفصّلاً" required></textarea>
         </div>
         <div class="form-buttons">
-          <input type="submit" id="submit" class="submit" value="إرسال" />
+          <input type="submit" id="submit" class="submit" value="أرسِل إلينا" />
         </div>
       </form>
     </div>
@@ -56,6 +59,7 @@
   <script type="text/javascript">
 
     // Define some variables.
+    var errorMessage = document.getElementById('error-message');
     var form = document.getElementById('form');
     var fullName = document.getElementById('fullName');
     var email = document.getElementById('email');
@@ -63,27 +67,45 @@
     var message = document.getElementById('message');
     var submit = document.getElementById('submit');
 
+    // Hide the error message initially.
+    errorMessage.style.display = 'none';
+
     // Define variables to be used to send a request.
     var http = new XMLHttpRequest();
-    var url = 'https://ep0j70w8oc.execute-api.us-east-1.amazonaws.com/dev/contact-us';
-
-    http.open('POST', url, true);
-
-    // Set some headers.
-    http.setRequestHeader('Content-type', 'application/json');
-    http.setRequestHeader('Accept', 'application/json');
+    // var url = 'https://ep0j70w8oc.execute-api.us-east-1.amazonaws.com/dev/contact-us';
+    var url = 'http://localhost:3000/contact-us';
 
     http.onreadystatechange = function() {
-      console.log(http.readyState, http.status);
-      submit.disabled = false;
-      if (http.readyState == XMLHttpRequest.DONE && http.status == 200) {
-          // Request finished. Do processing here.
+      if (http.readyState == XMLHttpRequest.DONE) {
+        submit.disabled = false;
+        if (http.status == 204) {
+          return window.location.href = 'thank-you-for-contacting-us.html';
+        }
+        errorMessage.style.display = 'block';
+        if (http.status == 400) {
+          errorMessage.innerHTML = 'الرجاء التأكّد من تعبئة الحقول المطلوبة.';
+        }
+        if (http.status == 406) {
+          errorMessage.innerHTML = 'الرجاء التأكّد من إدخال بريد إلكترونيّ صحيح.';
+        }
+        if (http.status == 408) {
+          errorMessage.innerHTML = 'لا يُمكن إرسال البريد الآن، نرجو المحاولة لاحقًا.';
+        }
       }
     }
 
     var handleSubmit = function(event) {
       event.preventDefault();
+
       submit.disabled = true;
+      errorMessage.style.display = 'none';
+
+      http.open('POST', url, true);
+
+      // Set some headers.
+      http.setRequestHeader('Content-type', 'application/json');
+      http.setRequestHeader('Accept', 'application/json');
+
       // Make a new request.
       var params = JSON.stringify({
         'name': fullName.value,
@@ -91,6 +113,7 @@
         'subject': subject.value,
         'message': message.value,
       });
+
       http.send(params);
     }
 
