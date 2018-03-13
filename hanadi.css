@@ -123,6 +123,20 @@ h2, strong{
   border-radius: 4px; font-family: 'Dubai-Bold', sans-serif;
 }
 
+.form-input input[type="text"]:invalid, .form-input input[type="email"]:invalid, textarea:invalid{
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI2SURBVGhD7ZnfS1NhGMcHdplUt930P9id5HkVJNxZTfScI2NGP0iWQrFUvLCciGYXYV4IhSCYENVFPyjNCxXF+WsoSssLhQr0wkQsUPpBgszH99meCdlomx6OJ3s+8L3Z3vf7Pp+dvTebg2EY5v9GcWpNilMf+Hu0JlpuT7Ld7kyh6pBShHGUttmP/HzjWHzQmsAdaGlr/y34Wvx9XEvb7IcQ4oiiagtni7xbK6tfYDehqRl7i4jCwuNnXN4TmGy35+TS8vLnb99/wO4MjYzviOSp3lO4HvdSzcFgGEaGour18vJ+jQ+312AHdmEn1VuHPLw60VD7ieysonrrEKo2i4dX1jbA1EwYpt+9Tym9/YMwGByD0HQYunpHoLMnCFf8t0lGm6V665CXeh0Pf/22j65yemxsRmD042o09x+9jD0R2Un11sEiBIuYDYsQLGI2LEKwiNmwCMEiZsMiBIuYDYsQLGI2h0/kRTfAhwWASCQ24eISwPynpPkVnofQkzcw8awHWtu6bCBy0Q9Q1RyTQB48BqgIJM3Pilvw9KovmoDnsg1ELtzYt0id59K/K7Il86qs3GYi/kaykKQoglm7VguTvpvwsNRnExEcbCgEMCcvcvXdPwZOFuw4OBH68fp56fWEw6UT7IiKyE6qtw7h1IN4ePF5D9wrKYOWPQb3Ygc9kWGqtw7h0nIVVd/EAcwIduUW6ILqrSXPZZyWn2KH/Eok+MMzjciOnHNFWVTLMAxz6HE4tgEgjyTrnXr8lwAAAABJRU5ErkJggg==);
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+}
+
+.form-input input[type="text"]:valid, .form-input input[type="email"]:valid, textarea:valid{
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJKSURBVGhD7ZnfS1NhGMcHdVdRu/WmfyAI6k7svAoj2plM7JwDcTDQpFuphiX9kMCRLaMLL6KfJCh6I0h0FZplEFHgjZUpCCWU1plhtIhsusf3Wc+Cjqfa7HB8recDHxjbeb/v893Zy2ALMQzD/N9oUaNNi5qDv9doo8vVpDwe3yJ0E4pSWJtpmXpEItbWwqDNZ5JwsfPKT+JzhdfxWlqmHkKIjZpuvNpba+feOWlw8/jpqNpFRE3NtoqYHUbL4wfK3szMvP2U+Qxuhx8++lGkSre34/W4lmLWBsuyNmi62SoP71xhuNWKGZiFmRQfHHLzhNdQf6PMPEbxwSF0Yww3r040w6F7t6HxfnEe7O+G+jt9YN/th3AqCeH2JOysP0xljDGKDw55qD/i5nV9XXDk/XNIOC+gxXmZf1yMjdOjELp1OW/Z6VPf74jMpPjgcBeZzX6Fb7klSH2YWjG0l8oWcRYXYBFy0LHei5xwxqE1PbFi4F+pbJFS5SJ+4y5yNj0JF4o8H6iSRY7KwTJLWXnUYX0fdvz+KHBtftpzcLdcxG+4CMlF/IaLkFzEb7gIyUX8houQXMRvuAjZNPsMNvXeUKvIcWecagBcnX/tObiXdVNPYMfQAFR0XlKjCA418mUOJhYycFLeHffAfxIz1q4I/Xht99z0HK4UMSNfRGZSfHCIqDmCm0fsBth//hwYqfZViWsxg+7IA4oPDhEzKjXdzOIAfohZlftMQfHBUhWzdst38br8SHj84VmCMmNPde0uimUYhvnnCYWWAXm7Edy/I1Z/AAAAAElFTkSuQmCC);
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+}
+
 /* For large screens. */
 @media (min-width: 768px){
   .container {
