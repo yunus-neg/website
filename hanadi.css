@@ -155,11 +155,13 @@ h2, strong{
 }
 
 .tracks{
-  
+
 }
 
 .track{
   margin-top: 10px;
+  display: inline-block;
+  width: 100%;
 }
 
 /* For large screens. */
@@ -187,5 +189,8 @@ h2, strong{
   }
   .copyrights{
     font-size: 12px;
+  }
+  .track{
+    margin-bottom: 20px;
   }
 }
