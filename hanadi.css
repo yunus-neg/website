@@ -57,7 +57,7 @@ h2, strong, h3{
 }
 
 .features {
-  /*color: red;*/
+
 }
 
 .feature {
@@ -155,13 +155,29 @@ h2, strong, h3{
 }
 
 .tracks{
+  margin-top: 10px;
+  margin-right: -20px;
+  margin-left: -20px;
+  padding: 20px; /*color: #fff;*/
+  background-color: #f3f3f3;
+}
 
+.tracks h2{
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .track{
   margin-top: 10px;
   display: inline-block;
   width: 100%;
+}
+
+.track .badge{
+  background-color: #90caf9;
+  color: #fff; padding-right: 6px;
+  padding-left: 6px; font-size: 14px;
+  border-radius: 6px; margin-left: 6px;
 }
 
 /* For large screens. */
@@ -190,7 +206,10 @@ h2, strong, h3{
   .copyrights{
     font-size: 12px;
   }
-  .track{
+  .tracks{
+    margin-bottom: 20px;
+  }
+  .track:not(:last-child){
     margin-bottom: 20px;
   }
 }
