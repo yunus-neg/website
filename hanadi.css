@@ -185,7 +185,7 @@ h2, strong, h3{
 }
 
 .applicant{
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
 }
 
 .applicant iframe{
@@ -198,8 +198,8 @@ h2, strong, h3{
 }
 
 .must{
-  background-color: #ff0002; padding: 20px;
-  margin-bottom: 20px; color: #fff;
+  background-color: #ffeb3b; padding: 20px;
+  margin-bottom: 20px; /*color: #fff;*/
 }
 
 /* For large screens. */
