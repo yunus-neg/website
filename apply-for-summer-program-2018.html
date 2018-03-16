@@ -40,7 +40,7 @@
       <form id="form">
         <div class="form-input must">
           <label for="university">رابط ڤيديو التعريف الذاتي (مطلوب)</label>
-          <input type="text" id="university" placeholder="https://www.youtube.com/watch?v=zIed15GiiCY&feature=youtu.be" required />
+          <input type="text" id="university" placeholder="https://www.youtube.com/watch?v=zIed15GiiCY&feature=youtu.be" pattern="^http(s)?:\/\/(www\.)?youtu(be\.com|.be)\/.+$" required />
         </div>
         <div class="form-input">
           <label for="fullName">الاسم الكامل (مطلوب)</label>
@@ -61,7 +61,7 @@
         </div>
         <div class="form-input">
           <label for="mobile">رقم الجوّال (مطلوب)</label>
-          <input type="text" id="subject" placeholder="بخصوص الحلول السحابيّة" required />
+          <input type="tel" id="subject" placeholder="+966555555555" pattern="^\+\d+$" required />
         </div>
         <div class="form-input">
           <label for="university">اسم الجامعة (مطلوب)</label>
@@ -73,18 +73,18 @@
         </div>
         <div class="form-input">
           <label for="location">مكان الإقامة (مطلوب)</label>
-          <input type="text" id="location" placeholder="القصيم - عنيزة" required />
+          <input type="text" id="location" placeholder="الرياض" required />
         </div>
         <div class="form-input">
           <label for="expectedGraduationDate">التاريخ المتوقّع للتخرّج (مطلوب)</label>
-          <input type="date" id="expectedGraduationDate" placeholder="December 2018" required />
+          <input type="date" id="expectedGraduationDate" required />
         </div>
         <div class="form-input">
           <label for="howDidYouKnowAboutUs">كيف عرفت عنّا؟ (مطلوب)</label>
           <input type="text" id="howDidYouKnowAboutUs" placeholder="عن طريق الواتساب" required />
         </div>
         <div class="form-buttons">
-          <input type="submit" id="submit" class="submit" value="أرسِل إلينا" />
+          <input type="submit" id="submit" class="submit" value="أرسِل الطلب" />
         </div>
       </form>
     </div>
