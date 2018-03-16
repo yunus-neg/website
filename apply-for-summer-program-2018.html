@@ -10,7 +10,7 @@
   <title>أنظمة غيمة - Cloud Systems - تقدّم إلى برنامج التدريب الصيفي</title>
 </head>
 <body>
-  <nav id="error-message" class="error">
+  <nav id="error-message" class="error-navbar">
     الصفحة قيد التحديث.
   </nav>
   <nav>
@@ -39,12 +39,12 @@
     <div class="form-container">
       <form id="form">
         <div class="form-input must">
-          <label for="university">رابط ڤيديو التعريف الذاتي (مطلوب)</label>
-          <input type="text" id="university" placeholder="https://www.youtube.com/watch?v=zIed15GiiCY&feature=youtu.be" pattern="^http(s)?:\/\/(www\.)?youtu(be\.com|.be)\/.+$" required />
+          <label for="youtubeVideo">رابط ڤيديو التعريف الذاتي (مطلوب)</label>
+          <input type="text" name ="youtubeVideo" id="youtubeVideo" placeholder="https://www.youtube.com/watch?v=zIed15GiiCY&feature=youtu.be" pattern="^http(s)?:\/\/(www\.)?youtu(be\.com|.be)\/.+$" required />
         </div>
         <div class="form-input">
           <label for="fullName">الاسم الكامل (مطلوب)</label>
-          <input type="text" id="fullName" placeholder="خالد الناصر" required />
+          <input type="text" name="fullName" id="fullName" placeholder="خالد الناصر" required />
         </div>
         <div class="form-input">
           <label>الجنس (مطلوب)</label>
@@ -57,31 +57,31 @@
         </div>
         <div class="form-input">
           <label for="email">البريد الإلكترونيّ (مطلوب)</label>
-          <input type="email" id="email" placeholder="example@example.com" required />
+          <input type="email" name="email" id="email" placeholder="example@example.com" required />
         </div>
         <div class="form-input">
           <label for="mobile">رقم الجوّال (مطلوب)</label>
-          <input type="tel" id="subject" placeholder="+966555555555" pattern="^\+\d+$" required />
+          <input type="tel" name="mobile" id="mobile" placeholder="0555555555" pattern="^\+\d+$" required />
         </div>
         <div class="form-input">
           <label for="university">اسم الجامعة (مطلوب)</label>
-          <input type="text" id="university" placeholder="جامعة القصيم" required />
+          <input type="text" name="university" id="university" placeholder="جامعة القصيم" required />
         </div>
         <div class="form-input">
           <label for="major">التخصّص (مطلوب)</label>
-          <input type="text" id="major" placeholder="نظم معلومات" required />
+          <input type="text" name="major" id="major" placeholder="نظم معلومات" required />
         </div>
         <div class="form-input">
           <label for="location">مكان الإقامة (مطلوب)</label>
-          <input type="text" id="location" placeholder="الرياض" required />
+          <input type="text" name="location" id="location" placeholder="الرياض" required />
         </div>
         <div class="form-input">
           <label for="expectedGraduationDate">التاريخ المتوقّع للتخرّج (مطلوب)</label>
-          <input type="date" id="expectedGraduationDate" required />
+          <input type="date" name="expectedGraduationDate" id="expectedGraduationDate" required />
         </div>
         <div class="form-input">
           <label for="howDidYouKnowAboutUs">كيف عرفت عنّا؟ (مطلوب)</label>
-          <input type="text" id="howDidYouKnowAboutUs" placeholder="عن طريق الواتساب" required />
+          <input type="text" name="howDidYouKnowAboutUs" id="howDidYouKnowAboutUs" placeholder="عن طريق الواتساب" required />
         </div>
         <div class="form-buttons">
           <input type="submit" id="submit" class="submit" value="أرسِل الطلب" />
@@ -92,8 +92,60 @@
       (ح) جميع الحقوق محفوظة لمؤسّسة أنظمة غيمة (Cloud Systems).
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
   <script type="text/javascript">
 
+    $("#form").validate({
+      rules: {
+        youtubeVideo: {
+          required: true,
+          url: true
+        },
+        fullName: "required",
+        gender: "required",
+        email: {
+          required: true,
+          email: true
+        },
+        mobile:{
+          required: true,
+          digits: true
+        },
+        university: "required",
+        major: "required",
+        location: "required",
+        expectedGraduationDate: {
+          required: true,
+          date: true
+        },
+        howDidYouKnowAboutUs: "required",
+      },
+      messages: {
+        youtubeVideo: {
+          required: "هذا الحقلُ مطلوب.",
+          url: "لُطفاً، أرفق رابط الڤيديو."
+        },
+        fullName: "لُطفاً، أَدخل اسمك الكريم.",
+        gender: "هذا الحقلُ مطلوب.",
+        email: {
+          required: "هذا الحقلُ مطلوب.",
+          email: "لُطفاً، أدخل بريداً إلكترونيّاً صحيحاً."
+        },
+        mobile:{
+          required: "لُطفاً، أدخل رقم هاتفك.",
+          digits: "لُطفاً، أدخل رقمَ هاتفٍ صحيح."
+        },
+        university: "لٌطفاً، اكْتب اسم الجامعة التي تدرس فيها.",
+        major: "لُطفاً، أخبرنا ما تخصّصك.",
+        location: "لُطفاً، أخبرنا أين تسكن.",
+        expectedGraduationDate: {
+          required: "هذا الحقلُ مطلوب.",
+          date: "لُطفاً، أدخل تاريخ تخرجك المتوقع."
+        },
+        howDidYouKnowAboutUs: "هذا الحقلُ مطلوب.",
+      }
+    });
     /*
     // Define some variables.
     var errorMessage = document.getElementById('error-message');
