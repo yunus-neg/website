@@ -185,6 +185,9 @@ h2, strong, h3{
   .container {
     width: 750px;
   }
+  .track{
+    margin-top: 20px;
+  }
 }
 
 /* For small screens. */
