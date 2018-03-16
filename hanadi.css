@@ -159,7 +159,7 @@ h2, strong, h3{
 }
 
 .form-input input[type="date"]{
-  width: 100%;
+  /*width: 100%;*/
 }
 
 .error{
