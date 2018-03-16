@@ -13,6 +13,10 @@ html {
   direction: rtl;
 }
 
+a{
+  color: #4caf50;
+}
+
 nav{
   background-color: #e1e1e1;
   padding: 10px; text-align: center;
@@ -180,6 +184,24 @@ h2, strong, h3{
   border-radius: 6px; margin-left: 6px;
 }
 
+.applicant{
+  margin-bottom: 10px;
+}
+
+.applicant iframe{
+  width: 100%;
+}
+
+.form-input label.radio-label{
+  display: inline-block; padding-right: 4px;
+  margin-left: 10px;
+}
+
+.must{
+  background-color: #ff0002; padding: 20px;
+  margin-bottom: 20px; color: #fff;
+}
+
 /* For large screens. */
 @media (min-width: 768px){
   .container {
@@ -187,6 +209,9 @@ h2, strong, h3{
   }
   .track{
     margin-top: 20px;
+  }
+  .applicant{
+    margin-top: -20px;
   }
 }
 
