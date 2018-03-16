@@ -112,7 +112,7 @@ h2, strong, h3{
   display: block; padding-bottom: 6px;
 }
 
-.form-input input:not([type="submit"]):not([type="radio"]), textarea{
+.form-input input:not([type="submit"]):not([type="radio"]):not([type="date"]), textarea{
   width: 100%; box-sizing: border-box;
   border: 1px solid #ccc; padding: 6px;
   font-size: 16px; line-height: initial;
