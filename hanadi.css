@@ -277,4 +277,7 @@ h2, strong, h3{
   .track:not(:last-child){
     margin-bottom: 20px;
   }
+  .agenda{
+    margin-bottom: 10px;
+  }
 }
