@@ -219,6 +219,10 @@ h2, strong, h3{
   /*text-align: center;*/
 }
 
+.agenda table td:first-child{
+  width: 30%;
+}
+
 .agenda table th{
   text-align: right; font-family: 'Dubai-Bold';
 }
