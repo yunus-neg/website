@@ -162,13 +162,8 @@ h2, strong, h3{
   /*width: 100%;*/
 }
 
-.error-navbar{
-  background-color: #ffeb3b;
-}
-
 .error{
-  color: #e75c5c;
-  margin-bottom: 5px;
+  background-color: #ffeb3b;
 }
 
 .tracks{

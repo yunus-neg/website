@@ -10,7 +10,7 @@
   <title>أنظمة غيمة - Cloud Systems - تواصل معنا</title>
 </head>
 <body>
-  <nav id="error-message" class="error-navbar">
+  <nav id="error-message" class="error">
     Something went wrong!
   </nav>
   <nav>
@@ -33,19 +33,19 @@
       <form id="form">
         <div class="form-input">
           <label for="fullName">الاسم الكامل (مطلوب)</label>
-          <input type="text" name="fullName" id="fullName" placeholder="خالد الناصر" required />
+          <input type="text" id="fullName" placeholder="خالد الناصر" required />
         </div>
         <div class="form-input">
           <label for="email">البريد الإلكترونيّ (مطلوب)</label>
-          <input type="email" name="email" id="email" placeholder="example@example.com" required />
+          <input type="email" id="email" placeholder="example@example.com" required />
         </div>
         <div class="form-input">
           <label for="subject">الموضوع (مطلوب)</label>
-          <input type="text" name="subject" id="subject" placeholder="بخصوص الحلول السحابيّة" required />
+          <input type="text" id="subject" placeholder="بخصوص الحلول السحابيّة" required />
         </div>
         <div class="form-input">
           <label for="message">الرسالة (مطلوب)</label>
-          <textarea id="message" name="message" placeholder="نصّ الرسالة مفصّلاً" required></textarea>
+          <textarea id="message" placeholder="نصّ الرسالة مفصّلاً" required></textarea>
         </div>
         <div class="form-buttons">
           <input type="submit" id="submit" class="submit" value="أرسِل إلينا" />
@@ -56,31 +56,7 @@
       (ح) جميع الحقوق محفوظة لمؤسّسة أنظمة غيمة (Cloud Systems).
     </div>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
   <script type="text/javascript">
-    $("#form").validate({
-      rules: {
-        fullName: "required",
-        email: {
-          required: true,
-          email: true
-        },
-        subject: "required",
-        message: "required",
-      },
-      messages: {
-        fullName: "لُطفاً، أَدخل اسمك الكريم.",
-        email: {
-          required: "هذا الحقلُ مطلوب.",
-          email: "لُطفاً، أدخل بريداً إلكترونيّاً صحيحاً."
-        },
-        subject: "لُطفاً، ضع عنواناً مناسباً لرسالتك.",
-        message: "مُتلهّفونَ لسماعِ ما لديك :)",
-      }
-    });
-
-    // Suggestion: Since we used JQuery, why we don't use its selectors?
 
     // Define some variables.
     var errorMessage = document.getElementById('error-message');
