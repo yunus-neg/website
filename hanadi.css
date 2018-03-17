@@ -174,7 +174,7 @@ h2, strong, h3{
   background-color: #f3f3f3;
 }
 
-.tracks h2{
+.tracks h2, .agenda h2{
   text-align: center;
   margin-bottom: 10px;
 }
@@ -205,6 +205,24 @@ h2, strong, h3{
   margin-left: 10px;
 }
 
+.agenda table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.agenda table td, .agenda table th{
+  padding: 4px; border-bottom: 1px solid #ccc;
+}
+
+.agenda-section{
+  font-family: 'Dubai-Bold'; color: #ccc;
+  /*text-align: center;*/
+}
+
+.agenda table th{
+  text-align: right; font-family: 'Dubai-Bold';
+}
+
 /*.inline-form{
   display: inline-block;
 }*/
@@ -224,6 +242,9 @@ h2, strong, h3{
   }
   .applicant{
     margin-top: -20px;
+  }
+  .agenda h2{
+    margin-top: 20px;
   }
 }
 
