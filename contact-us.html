@@ -40,8 +40,8 @@
     <div class="form-container">
       <form id="form">
         <div class="form-input">
-          <label for="fullName">الاسم الكامل (مطلوب)</label>
-          <input type="text" id="fullName" placeholder="خالد الناصر" required />
+          <label for="fullname">الاسم الكامل (مطلوب)</label>
+          <input type="text" id="fullname" placeholder="خالد الناصر" required />
         </div>
         <div class="form-input">
           <label for="email">البريد الإلكترونيّ (مطلوب)</label>
@@ -69,7 +69,7 @@
     // Define some variables.
     var errorMessage = document.getElementById('error-message');
     var form = document.getElementById('form');
-    var fullName = document.getElementById('fullName');
+    var fullname = document.getElementById('fullname');
     var email = document.getElementById('email');
     var subject = document.getElementById('subject');
     var message = document.getElementById('message');
@@ -115,7 +115,7 @@
 
       // Make a new request.
       var params = JSON.stringify({
-        'name': fullName.value,
+        'name': fullname.value,
         'email': email.value,
         'subject': subject.value,
         'message': message.value,
