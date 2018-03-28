@@ -85,7 +85,7 @@
         </div>
         <div class="form-input">
           <label for="expectedGraduationDate">التاريخ المتوقّع للتخرّج (مطلوب)</label>
-          <input type="date" id="expectedGraduationDate" required />
+          <input type="date" id="expectedGraduationDate" placeholder="2018-01-24" required />
         </div>
         <div class="form-input">
           <label for="howDidYouKnowAboutUs">كيف عرفت عنّا؟ (مطلوب)</label>
@@ -107,7 +107,6 @@
     var form = document.getElementById('form');
     var youtubeVideoUrl = document.getElementById('youtubeVideoUrl');
     var fullname = document.getElementById('fullname');
-    var gender = document.querySelector('input[name="gender"]:checked').value;
     var email = document.getElementById('email');
     var mobile = document.getElementById('mobile');
     var university = document.getElementById('university');
@@ -162,7 +161,7 @@
       var params = JSON.stringify({
         'youtubeVideoUrl': youtubeVideoUrl.value,
         'fullname': fullname.value,
-        'gender': gender,
+        'gender': document.querySelector('input[name="gender"]:checked').value,
         'email': email.value,
         'mobile': mobile.value,
         'university': university.value,
