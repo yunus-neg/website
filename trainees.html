@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Language" content="ar" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" type="text/css" href="hanadi.css" />
+  <title>أنظمة غيمة - Cloud Systems - التصويت لمتقدّم</title>
+  <style>
+    table{border-collapse: collapse;}
+    td{padding: 4px; border: 1px solid #ccc;}
+    th{padding: 4px; border: 1px solid #ccc; background-color: #f1f1f1;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="content"></div>
+  </div>
+  <script type="text/javascript">
+    function getQueryString(name) {
+      var search = new RegExp(name + '=([^&#]*)(&|#|$)').exec(window.location.search);
+      return search ? search[1] : null;
+    };
+
+    var content = document.getElementById('content');
+    var accessToken = getQueryString('accessToken');
+
+    content.innerHTML = 'لحظة من فضلك...';
+
+    if (!accessToken) {
+      content.innerHTML = 'الرابط غير صحيح.';
+    } else {
+      // Define variables to be used to send a request.
+      var http = new XMLHttpRequest();
+      // var url = 'https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/trainees';
+      var url = 'http://localhost:3000/trainees';
+
+      http.onreadystatechange = function() {
+        if (http.readyState == XMLHttpRequest.DONE) {
+          if (http.status == 200) {
+            var trainees = JSON.parse(http.response);
+            var accepted = trainees.filter(function(trainee){
+              return trainee.currentStatus == 'accepted';
+            }).length;
+            var initiallyRejected = trainees.filter(function(trainee){
+              return trainee.currentStatus == 'initiallyRejected';
+            }).length;
+            var initiallyAccepted = trainees.filter(function(trainee){
+              return trainee.currentStatus == 'initiallyAccepted';
+            }).length;
+            var pending = trainees.filter(function(trainee){
+              return trainee.currentStatus === undefined;
+            }).length;
+            var html = '<p>' + accepted + ' قبول. ' + initiallyAccepted + ' قبول مبدئي. ' + initiallyRejected + ' رفض مبدئي. ' + pending + ' معلّق.</p><table><thead><tr><th>الاسم الكامل</th><th>البريد الإلكترونيّ</th><th>youtubeVideoUrl</th><th>الحالة</th></tr></thead><tbody>';
+            for (var i=0; i<trainees.length; i++) {
+              var currentStatus = trainees[i].currentStatus ? trainees[i].currentStatus : 'pending';
+              html += '<tr><td>' + trainees[i].fullname + '</td><td><a href="mailto:' + trainees[i].email + '">' + trainees[i].email + '</a></td><td><a href="' + trainees[i].youtubeVideoUrl + '">URL</a></td><td>' + currentStatus + '</td></tr>';
+            }
+            html += '</tbody></table>';
+            content.innerHTML = html;
+          } else {
+            content.innerHTML = 'الرابط غير صحيح.';
+          }
+        }
+      }
+
+      http.open('GET', url);
+
+      // Set some headers.
+      http.setRequestHeader('Content-type', 'application/json');
+      http.setRequestHeader('Accept', 'application/json');
+      http.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+      http.send();
+    }
+
+  </script>
+</body>
+</html>
