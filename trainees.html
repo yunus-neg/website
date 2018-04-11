@@ -52,7 +52,7 @@
             var pending = trainees.filter(function(trainee){
               return trainee.currentStatus === undefined;
             }).length;
-            var html = '<p>' + accepted + ' قبول. ' + initiallyAccepted + ' قبول مبدئي. ' + initiallyRejected + ' رفض مبدئي. ' + pending + ' معلّق.</p><table><thead><tr><th>الاسم الكامل</th><th>البريد الإلكترونيّ</th><th>youtubeVideoUrl</th><th>الحالة</th></tr></thead><tbody>';
+            var html = '<p>' + trainees.length + ' متقدّم. ' + accepted + ' قبول. ' + initiallyAccepted + ' قبول مبدئي. ' + initiallyRejected + ' رفض مبدئي. ' + pending + ' معلّق.</p><table><thead><tr><th>الاسم الكامل</th><th>البريد الإلكترونيّ</th><th>youtubeVideoUrl</th><th>الحالة</th></tr></thead><tbody>';
             for (var i=0; i<trainees.length; i++) {
               var currentStatus = trainees[i].currentStatus ? trainees[i].currentStatus : 'pending';
               html += '<tr><td>' + trainees[i].fullname + '</td><td><a href="mailto:' + trainees[i].email + '">' + trainees[i].email + '</a></td><td><a href="' + trainees[i].youtubeVideoUrl + '">URL</a></td><td>' + currentStatus + '</td></tr>';
