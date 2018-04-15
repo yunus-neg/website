@@ -93,6 +93,11 @@ h2, strong, h3{
   border-radius: 4px; font-family: 'Dubai-Bold', sans-serif;
 }
 
+.disabled{
+  background-color: #f1f1f1 !important;
+  cursor: not-allowed;
+}
+
 .copyrights{
   margin-top: 20px; border-top: 1px solid #ccc;
   color: #ccc; font-size: 14px; padding-top: 10px;
