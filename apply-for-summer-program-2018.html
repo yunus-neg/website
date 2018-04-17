@@ -19,7 +19,7 @@
 </head>
 <body>
   <nav id="error-message" class="error">
-    انتهت فترة التسجيل.
+    الصفحة قيد التطوير.
   </nav>
   <nav>
     <ul>
@@ -100,5 +100,82 @@
       (ح) جميع الحقوق محفوظة لمؤسّسة أنظمة غيمة (Cloud Systems).
     </div>
   </div>
+  <script type="text/javascript">
+
+    // Define some variables.
+    var errorMessage = document.getElementById('error-message');
+    var form = document.getElementById('form');
+    var youtubeVideoUrl = document.getElementById('youtubeVideoUrl');
+    var fullname = document.getElementById('fullname');
+    var email = document.getElementById('email');
+    var mobile = document.getElementById('mobile');
+    var university = document.getElementById('university');
+    var major = document.getElementById('major');
+    var place = document.getElementById('place');
+    var expectedGraduationDate = document.getElementById('expectedGraduationDate');
+    var howDidYouKnowAboutUs = document.getElementById('howDidYouKnowAboutUs');
+    var submit = document.getElementById('submit');
+
+    // Hide the error message initially.
+    errorMessage.style.display = 'none';
+
+    // Define variables to be used to send a request.
+    var http = new XMLHttpRequest();
+    var url = 'https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/apply';
+
+    http.onreadystatechange = function() {
+      if (http.readyState == XMLHttpRequest.DONE) {
+        submit.disabled = false;
+        if (http.status == 204) {
+          return window.location.href = 'thank-you-for-applying.html';
+        }
+        errorMessage.style.display = 'block';
+        if (http.status == 400) {
+          errorMessage.innerHTML = 'الرجاء التأكّد من تعبئة الحقول المطلوبة.';
+        }
+        if (http.status == 406) {
+          errorMessage.innerHTML = 'الرجاء التأكّد من إدخال الحقول المطلوبة بالصياغة الصحيحة.';
+        }
+        if (http.status == 409) {
+          errorMessage.innerHTML = 'لقد تقدّمت مُسبقًا إلى التدريب.';
+        }
+        if (http.status == 408) {
+          errorMessage.innerHTML = 'لا يُمكن التقدّم إلى التدريب الآن، نرجو المحاولة لاحقًا.';
+        }
+      }
+    }
+
+    var handleSubmit = function(event) {
+      event.preventDefault();
+
+      submit.disabled = true;
+      errorMessage.style.display = 'none';
+
+      http.open('POST', url, true);
+
+      // Set some headers.
+      http.setRequestHeader('Content-type', 'application/json');
+      http.setRequestHeader('Accept', 'application/json');
+
+      // Make a new request.
+      var params = JSON.stringify({
+        'youtubeVideoUrl': youtubeVideoUrl.value,
+        'fullname': fullname.value,
+        'gender': document.querySelector('input[name="gender"]:checked').value,
+        'email': email.value,
+        'mobile': mobile.value,
+        'university': university.value,
+        'major': major.value,
+        'place': place.value,
+        'expectedGraduationDate': expectedGraduationDate.value,
+        'howDidYouKnowAboutUs': howDidYouKnowAboutUs.value,
+      });
+      http.send(params);
+    }
+
+    // Start dealing with them.
+    form.addEventListener('submit', handleSubmit, false);
+
+  </script>
 </body>
 </html>
