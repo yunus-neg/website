@@ -9,21 +9,42 @@
   <link rel="stylesheet" type="text/css" href="hanadi.css" />
   <title>أنظمة غيمة - Cloud Systems - التصويت لمتقدّم</title>
   <style>
+    #content{margin-top: 10px;}
     table{border-collapse: collapse;}
     td{padding: 4px; border: 1px solid #ccc;}
     th{padding: 4px; border: 1px solid #ccc; background-color: #f1f1f1;}
   </style>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li>
+        <a href="index.html">الرئيسيّة</a>
+      </li>
+      <li>
+        <a id="logout" href="#">تسجيل الخروج</a>
+      </li>
+    </ul>
+  </nav>
   <div class="container">
     <div id="content"></div>
   </div>
   <script type="text/javascript">
 
   // Initializing our Auth0Lock
+  var options = {
+    theme: {
+      logo: 'https://avatars3.githubusercontent.com/u/30606298?s=150&v=4',
+    },
+    languageDictionary: {
+      emailInputPlaceholder: "something@youremail.com",
+      title: "CloudSystems"
+    },
+  };
   var lock = new Auth0Lock(
     'I6A29coC25s2hH-QBMfmMLdyiGQJ3gZ1',
-    'cloudsystems.auth0.com'
+    'cloudsystems.auth0.com',
+    options
   );
 
   // Listening for the authenticated event
@@ -33,17 +54,21 @@
         return localStorage.removeItem('accessToken');
       }
       localStorage.setItem('accessToken', authResult.accessToken);
-      handleUI();
+      window.location.reload();
     });
   });
 
-  // document.getElementById('login').addEventListener('click', function() {
-  //   lock.show();
-  // });
+  document.getElementById('logout').addEventListener('click', function() {
+    localStorage.removeItem('accessToken');
+    lock.logout({
+      returnTo: window.location.href,
+    });
+  });
 
   function handleUI() {
     var accessToken = localStorage.getItem('accessToken');
     var content = document.getElementById('content');
+
     if (!accessToken) return lock.show();
 
     content.innerHTML = 'لحظات من فضلك...';
