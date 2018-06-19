@@ -114,8 +114,19 @@ h2, strong, h3{
   padding-bottom: 10px;
 }
 
+.form-input img{
+  width: 100%;
+}
+
 .form-input label{
   display: block; padding-bottom: 6px;
+}
+
+.form-input p{
+  text-align: justify;
+  padding-bottom: 10px;
+  font-size: 14px;
+  color: #666;
 }
 
 .form-input input:not([type="submit"]):not([type="radio"]):not([type="date"]), textarea{
