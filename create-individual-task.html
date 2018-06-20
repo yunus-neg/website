@@ -35,21 +35,18 @@
       </a>
     </div>
     <div class="breif">
-      <strong>إضافة مهمّة فرديّة:</strong> يُمكن إضافة مهمّة فرديّة وإرسالها إلى جميع المتدرّبين بكلّ يسرٍ وسهولة من هُنا.
+      <strong>إضافة مهمّة فرديّة:</strong> يُمكن إضافة مهمّة فرديّة وإرسالها إلى جميع المتدرّبين. كلّ متدرّب ستصل إليه رسالةً فيها تفاصيل المهمّة ورابط يتيح للمتدرّب تسليمها. في حال أرسل المتدرّب إجابته يقرّر المُرشد أن يقبلها أو يرفضها، إذا قَبِلها يمتلك المتدرّب المهارة ذات العلاقة، وإن رفضها فلا يمتلك المتدرّب المهارة. في حال تأخّر المتدرّب عن تسليم المهمّة وتجاوز عدد الساعات الأقصى لتسليمها فإنّه لا يحصل على المهارة كذلك.
     </div>
     <div class="form-container">
       <form id="form">
         <div class="form-input">
           <label for="title">عنوان المهمّة (مطلوب)</label>
+          <p>هذا العنوان سيكون في عنوان الرسالة، تأكّد من أن يكون فريدًا عن غيره من العناوين الأخرى، ومن عدم إضافة تعجّب في آخره أو أي رمز آخر غير الأقواس.</p>
           <input type="text" id="title" placeholder="التعرّف على Git" required />
         </div>
         <div class="form-input">
-          <label for="image">رابط صورة المهمّة (مطلوب)</label>
-          <input type="text" id="image" placeholder="https://cdn.dribbble.com/users/577358/screenshots/4166737/dribbble-size_moms-test.png" required />
-          <!-- <img src="https://cdn.dribbble.com/users/577358/screenshots/3995609/101_programming-for-beginners_dribbble.png" /> -->
-        </div>
-        <div class="form-input">
           <label for="feedback">التعليق على المهمّة السابقة (إن وُجد)</label>
+          <p>هذا التعليق سيقرأه جميع المتدرّبين. إن شئت، فتأكّد من كونِه يثني على من أتقن، ويعتب على من لم يجتهد، ويحفّز، وهكذا. تأكّد من ختمهِ بنقطة.</p>
           <textarea id="feedback" placeholder="ما شاء الله عليكم، لطيف عملكم أمس، توزيعكم للمهام، تصميمكم لواجهات المستخدم، ثم تطبيقها على الموقع." required></textarea>
         </div>
         <div class="form-input">
@@ -58,8 +55,8 @@
           <textarea id="description" placeholder="أنشيء صفحة ويب تُبرز فيها سيرتك الذاتيّة." required></textarea>
         </div>
         <div class="form-input">
-          <label for="mentors">المُرشدون (مطلوب)</label>
-          <p>يُمكن إضافة أكثر من مُرشد من خلال وضع فاصلة باللغة الإنجليزيّة "," بين كلّ مُرشد والآخر.</p>
+          <label for="mentors">البريد الإلكتروني للمُرشدين (مطلوب)</label>
+          <p>المُرشد هو من يقوم بعملية التصحيح والمتابعة. يُمكن إضافة مُرشد أو أكثر من خلال وضع فاصلة باللغة الإنجليزيّة "," بين كلّ مُرشدٍ وآخر.</p>
           <input type="text" id="mentors" placeholder="example@example.com" required />
         </div>
         <div class="form-input">
@@ -70,20 +67,18 @@
         <div class="form-input">
           <label for="references">المراجع (إن وُجد)</label>
           <p>في حال وجود مراجع؛ تأكّد من أن يبدأ كلّ مرجع في سطر جديد بعد علامة الناقص "-"، ثم مسافة ثم عبارات تصف بها المرجع، ثم مسافة ثم بين قوسين ضع رابط المرجع، ثم نقطة لإنهاء المرجع، وهكذا مع بقيّة المراجع.</p>
-<textarea id="references" placeholder="- المرجع 1 (URL1).
-- المرجع 2 (URL2)." required></textarea>
+<textarea id="references" placeholder="- المرجع 1 (URL1)." required></textarea>
         </div>
         <div class="form-input">
           <label for="channel">قناة Slack (مطلوب)</label>
           <input type="text" id="channel" placeholder="المطوّر" required />
         </div>
         <div class="form-input">
-          <label for="deliveredAt">عدد الساعات الأقصى لتسليم المهمّة (مطلوب)</label>
-          <input type="text" id="deliveredAt" placeholder="24" required />
+          <label for="expiresAt">عدد الساعات الأقصى لتسليم المهمّة (مطلوب)</label>
+          <input type="text" id="expiresAt" placeholder="24" required />
         </div>
         <div class="form-buttons">
           <input type="submit" id="submit" class="submit" value="عاين الرسالة" />
-          <!-- <input type="submit" id="submit" class="submit" value="أضِف المهمّة" /> -->
         </div>
       </form>
     </div>
