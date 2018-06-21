@@ -47,7 +47,7 @@
             <br />خالد السليمان، السلام عليكم.<br /><br />
             <img src="https://cdn.dribbble.com/users/964453/screenshots/3633687/dribdeer.gif" /><br /><br />
             <span id="feedback-preview">feedback</span>
-            مهمّة جديدة بانتظار إبداعاتِك ويجب تسليمها قبل مرور 24 ساعة من الآن.
+            مهمّة جديدة بانتظار إبداعاتِك ويجب تسليمها قبل مرور <span id="expires-after-preview">expiresAfter</span> ساعة من الآن.
             <span id="description-preview">description</span>
             <span id="references-preview">references</span>
             في حال رغبت بتسليم المهمّة، تفضّل بزيارة الرابط:<br />
@@ -133,6 +133,7 @@
     var feedbackPreview = document.getElementById('feedback-preview');
     var descriptionPreview = document.getElementById('description-preview');
     var referencesPreview = document.getElementById('references-preview');
+    var expiresAfterPreview = document.getElementById('expires-after-preview');
     var channelPreview = document.getElementById('channel-preview');
 
     // Hide the error message initially.
@@ -188,6 +189,7 @@
       titlePreview.innerHTML = title.value;
       feedbackPreview.innerHTML = feedback.value + '<br /><br />';
       descriptionPreview.innerHTML = description.value + '<br /><br />';
+      expiresAfterPreview.innerHTML = expiresAfter.value;
       channelPreview.innerHTML = channel.value;
       if (references.value == '') {
         referencesPreview.innerHTML = '';
