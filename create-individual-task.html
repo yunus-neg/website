@@ -39,46 +39,68 @@
     </div>
     <div class="form-container">
       <form id="form">
+        <div id="preview-mode" class="preview-container">
+          <div class="subject">
+            مهمّة جديدة: <span id="title-preview">title</span>!
+          </div>
+          <div class="content">
+            <br />خالد السليمان، السلام عليكم.<br /><br />
+            <img src="https://cdn.dribbble.com/users/964453/screenshots/3633687/dribdeer.gif" /><br /><br />
+            <span id="feedback-preview">feedback</span>
+            مهمّة جديدة بانتظار إبداعاتِك ويجب تسليمها قبل مرور 24 ساعة من الآن.
+            <span id="description-preview">description</span>
+            <span id="references-preview">references</span>
+            في حال رغبت بتسليم المهمّة، تفضّل بزيارة الرابط:<br />
+            <a href="#">https://cloudsystems.sa/individual-tasks/e0cac4ee-98f3-4c23-acd8-f12985a15573/deliver</a><br /><br />
+            وفي حال احتجت لمساعدةٍ فلا تتواني بالبحث عنها في قناة المسار <a href="#"><span id="channel-preview">channel</span></a> في تطبيق Slack.<br /><br />
+            كلّ الحظّ النبيل.<br />
+            مؤسّسة أنظمة غيمة (Cloud Systems).<br /><br />
+          </div>
+        </div>
+        <div id="edit-mode">
         <div class="form-input">
           <label for="title">عنوان المهمّة (مطلوب)</label>
           <p>هذا العنوان سيكون في عنوان الرسالة، تأكّد من أن يكون فريدًا عن غيره من العناوين الأخرى، ومن عدم إضافة تعجّب في آخره أو أي رمز آخر غير الأقواس.</p>
-          <input type="text" id="title" placeholder="التعرّف على Git" required />
+          <input type="text" id="title" placeholder="التعرّف على Git" required value="التعرّف على Git" />
         </div>
         <div class="form-input">
           <label for="feedback">التعليق على المهمّة السابقة (إن وُجد)</label>
           <p>هذا التعليق سيقرأه جميع المتدرّبين. إن شئت، فتأكّد من كونِه يثني على من أتقن، ويعتب على من لم يجتهد، ويحفّز، وهكذا. تأكّد من ختمهِ بنقطة.</p>
-          <textarea id="feedback" placeholder="ما شاء الله عليكم، لطيف عملكم أمس، توزيعكم للمهام، تصميمكم لواجهات المستخدم، ثم تطبيقها على الموقع." required></textarea>
+          <textarea id="feedback" placeholder="ما شاء الله عليكم، لطيف عملكم أمس، توزيعكم للمهام، تصميمكم لواجهات المستخدم، ثم تطبيقها على الموقع.">ما شاء الله عليكم، لطيف عملكم أمس، توزيعكم للمهام، تصميمكم لواجهات المستخدم، ثم تطبيقها على الموقع.</textarea>
         </div>
         <div class="form-input">
           <label for="description">وصف المهمّة (مطلوب)</label>
           <p>تأكّد من وضوح وصف المهمّة ومن كتابته بصيغة الأمر "إقرأ"، "صمّم"، وهكذا، وتأكّد من ختمهِ بنقطة.</p>
-          <textarea id="description" placeholder="أنشيء صفحة ويب تُبرز فيها سيرتك الذاتيّة." required></textarea>
+          <textarea id="description" placeholder="أنشيء صفحة ويب تُبرز فيها سيرتك الذاتيّة." required>أنشيء صفحة ويب تُبرز فيها سيرتك الذاتيّة.</textarea>
         </div>
         <div class="form-input">
           <label for="mentors">البريد الإلكتروني للمُرشدين (مطلوب)</label>
           <p>المُرشد هو من يقوم بعملية التصحيح والمتابعة. يُمكن إضافة مُرشد أو أكثر من خلال وضع فاصلة باللغة الإنجليزيّة "," بين كلّ مُرشدٍ وآخر.</p>
-          <input type="text" id="mentors" placeholder="example@example.com" required />
+          <input type="text" id="mentors" placeholder="example@example.com" required value="example@example.com" />
         </div>
         <div class="form-input">
           <label for="skill">المهارة ذات العلاقة (مطلوب)</label>
           <p>تأكّد من نسخ اسم المهارة من <a href="https://docs.google.com/spreadsheets/d/1-8ji_oF0tjxQnIdKJdszpJz8UYiK6BEhFMisz0fkeiM/edit?usp=sharing" target="_blank">جدول المهارات الخاصّة بهذا البرنامج التدريبيّ</a>؛ لأنّ المتدرّب سيمتلك هذه المهارة بمجرّد إتمامه لهذه المهمّة بشكلٍ صحيح. يجب إدخال مهارة واحدة فقط.</p>
-          <input type="text" id="skill" placeholder="Quality Assurance Fundamentals" required />
+          <input type="text" id="skill" placeholder="Quality Assurance Fundamentals" required value="Quality Assurance Fundamentals" />
         </div>
         <div class="form-input">
           <label for="references">المراجع (إن وُجد)</label>
           <p>في حال وجود مراجع؛ تأكّد من أن يبدأ كلّ مرجع في سطر جديد بعد علامة الناقص "-"، ثم مسافة ثم عبارات تصف بها المرجع، ثم مسافة ثم بين قوسين ضع رابط المرجع، ثم نقطة لإنهاء المرجع، وهكذا مع بقيّة المراجع.</p>
-<textarea id="references" placeholder="- المرجع 1 (URL1)." required></textarea>
+<textarea id="references" placeholder="- المرجع 1 (URL1)."></textarea>
         </div>
         <div class="form-input">
           <label for="channel">قناة Slack (مطلوب)</label>
-          <input type="text" id="channel" placeholder="المطوّر" required />
+          <input type="text" id="channel" placeholder="developer" required value="developer" />
         </div>
         <div class="form-input">
-          <label for="expiresAt">عدد الساعات الأقصى لتسليم المهمّة (مطلوب)</label>
-          <input type="text" id="expiresAt" placeholder="24" required />
+          <label for="expiresAfter">عدد الساعات الأقصى لتسليم المهمّة (مطلوب)</label>
+          <input type="text" id="expiresAfter" placeholder="24" required value="24" />
+        </div>
         </div>
         <div class="form-buttons">
-          <input type="submit" id="submit" class="submit" value="عاين الرسالة" />
+          <button id="preview" class="submit">عاين الرسالة</button>
+          <input type="submit" id="submit" class="submit" value="أرسِل المهمّة" />
+          <button id="edit" class="secondary">عدِّل المهمّة</button>
         </div>
       </form>
     </div>
@@ -91,63 +113,132 @@
     // Define some variables.
     var errorMessage = document.getElementById('error-message');
     var form = document.getElementById('form');
-    var fullname = document.getElementById('fullname');
-    var email = document.getElementById('email');
-    var subject = document.getElementById('subject');
-    var message = document.getElementById('message');
+    var title = document.getElementById('title');
+    var feedback = document.getElementById('feedback');
+    var description = document.getElementById('description');
+    var mentors = document.getElementById('mentors');
+    var skill = document.getElementById('skill');
+    var channel = document.getElementById('channel');
+    var expiresAfter = document.getElementById('expiresAfter');
+    var preview = document.getElementById('preview');
+    var edit = document.getElementById('edit');
     var submit = document.getElementById('submit');
+
+    // Modes.
+    var editMode = document.getElementById('edit-mode');
+    var previewMode = document.getElementById('preview-mode');
+
+    // Preview.
+    var titlePreview = document.getElementById('title-preview');
+    var feedbackPreview = document.getElementById('feedback-preview');
+    var descriptionPreview = document.getElementById('description-preview');
+    var referencesPreview = document.getElementById('references-preview');
+    var channelPreview = document.getElementById('channel-preview');
 
     // Hide the error message initially.
     errorMessage.style.display = 'none';
+    previewMode.style.display = 'none';
+    submit.style.display = 'none';
+    edit.style.display = 'none';
+
+    function parseReferences(references) {
+      var regex = /\-\s(.*)\s\((.*)\)\./g;
+      var list = [];
+      match = regex.exec(references);
+      while (match != null) {
+        list.push({
+          title: match[1],
+          url: match[2],
+        });
+        match = regex.exec(references);
+      }
+      return list;
+    }
 
     // Define variables to be used to send a request.
-    var http = new XMLHttpRequest();
-    var url = 'https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/contact-us';
+    // var http = new XMLHttpRequest();
+    // var url = 'https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/contact-us';
 
-    http.onreadystatechange = function() {
-      if (http.readyState == XMLHttpRequest.DONE) {
-        submit.disabled = false;
-        if (http.status == 204) {
-          return window.location.href = 'thank-you-for-contacting-us.html';
+    // http.onreadystatechange = function() {
+    //   if (http.readyState == XMLHttpRequest.DONE) {
+    //     submit.disabled = false;
+    //     if (http.status == 204) {
+    //       return window.location.href = 'thank-you-for-contacting-us.html';
+    //     }
+    //     errorMessage.style.display = 'block';
+    //     if (http.status == 400) {
+    //       errorMessage.innerHTML = 'الرجاء التأكّد من تعبئة الحقول المطلوبة.';
+    //     }
+    //     if (http.status == 406) {
+    //       errorMessage.innerHTML = 'الرجاء التأكّد من إدخال بريد إلكترونيّ صحيح.';
+    //     }
+    //     if (http.status == 408) {
+    //       errorMessage.innerHTML = 'لا يُمكن إرسال البريد الآن، نرجو المحاولة لاحقًا.';
+    //     }
+    //   }
+
+    var handlePreview = function(event) {
+      if (form.checkValidity() == false) return;
+      event.preventDefault();
+      editMode.style.display = 'none';
+      previewMode.style.display = 'block';
+      preview.style.display = 'none';
+      submit.style.display = 'inline-block';
+      edit.style.display = 'inline-block';
+      titlePreview.innerHTML = title.value;
+      feedbackPreview.innerHTML = feedback.value + '<br /><br />';
+      descriptionPreview.innerHTML = description.value + '<br /><br />';
+      channelPreview.innerHTML = channel.value;
+      if (references.value == '') {
+        referencesPreview.innerHTML = '';
+      } else {
+        var parsedReferences = parseReferences(references.value);
+        console.log(parsedReferences);
+        var referencesPreviewHTML = 'المراجع:<br />';
+        for (var i = 0; i < parsedReferences.length; i++) {
+          referencesPreviewHTML += '<br />- ' + parsedReferences[i].title + ' (<a href="#">' + parsedReferences[i].url + '</a>).';
         }
-        errorMessage.style.display = 'block';
-        if (http.status == 400) {
-          errorMessage.innerHTML = 'الرجاء التأكّد من تعبئة الحقول المطلوبة.';
-        }
-        if (http.status == 406) {
-          errorMessage.innerHTML = 'الرجاء التأكّد من إدخال بريد إلكترونيّ صحيح.';
-        }
-        if (http.status == 408) {
-          errorMessage.innerHTML = 'لا يُمكن إرسال البريد الآن، نرجو المحاولة لاحقًا.';
-        }
+        referencesPreviewHTML += '<br /><br />';
+        referencesPreview.innerHTML = referencesPreviewHTML;
       }
+    }
+
+    var handleEdit = function(event) {
+      event.preventDefault();
+      editMode.style.display = 'block';
+      previewMode.style.display = 'none';
+      preview.style.display = 'inline-block';
+      submit.style.display = 'none';
+      edit.style.display = 'none';
     }
 
     var handleSubmit = function(event) {
       event.preventDefault();
-
-      submit.disabled = true;
+      // submit.disabled = true;
       errorMessage.style.display = 'none';
 
-      http.open('POST', url, true);
+      // http.open('POST', url, true);
 
-      // Set some headers.
-      http.setRequestHeader('Content-type', 'application/json');
-      http.setRequestHeader('Accept', 'application/json');
+      // // Set some headers.
+      // http.setRequestHeader('Content-type', 'application/json');
+      // http.setRequestHeader('Accept', 'application/json');
 
-      // Make a new request.
-      var params = JSON.stringify({
-        'name': fullname.value,
-        'email': email.value,
-        'subject': subject.value,
-        'message': message.value,
-      });
+      // // Make a new request.
+      // var params = JSON.stringify({
+      //   'name': fullname.value,
+      //   'email': email.value,
+      //   'subject': subject.value,
+      //   'message': message.value,
+      // });
 
-      http.send(params);
+      // http.send(params);
     }
 
     // Start dealing with them.
-    form.addEventListener('submit', handleSubmit, false);
+    // form.addEventListener('submit', handleSubmit, false);
+    preview.addEventListener('click', handlePreview, false);
+    edit.addEventListener('click', handleEdit, false);
+
   </script>
 </body>
 </html>
