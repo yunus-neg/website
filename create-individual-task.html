@@ -187,7 +187,7 @@
       submit.style.display = 'inline-block';
       edit.style.display = 'inline-block';
       titlePreview.innerHTML = title.value;
-      feedbackPreview.innerHTML = feedback.value + '<br /><br />';
+      feedbackPreview.innerHTML = (feedback.value == '') ? '' : feedback.value + '<br /><br />';
       descriptionPreview.innerHTML = description.value + '<br /><br />';
       expiresAfterPreview.innerHTML = expiresAfter.value;
       channelPreview.innerHTML = channel.value;
