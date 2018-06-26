@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="Content-Language" content="ar" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <script src="https://cdn.auth0.com/js/lock/11.5.2/lock.min.js"></script>
   <link rel="stylesheet" type="text/css" href="hanadi.css" />
   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS5SURBVGhD7VhbT1xVFEYfjA8an0xM1MQ/4Ksm+sBD58acw8DA3jNcLMzItOWSthJMiwIFWrAYi1qTqrUxwXgjFkNbW6SWak1Te1GkUIECLdOBKaXlDgWsNS7XnrPPmTNwhtBxmCHmfMkXCPuctb5vr7332pwEHTp06NChQ4eO/zESKX3MIBCbUSTlRpF+YBRII/7+iUkku02iI9ViIU/yR9cnjMmOl1HwcRT/p0mksALvo6kTRjHdxF9dHzClOJ9lwtRizckO8BQUw443q6Gsci+U7NwF7s1bA39XP2cSyGlzivM5Hip+YLOKVbgjC9tcVAItrafh9u0JWFy8r3Byag6Ghkeg9+oAfPFVE7y6ZbtiBt+fYUuRh4w9AvtAIH8zMXaHC062/QwLC3+FGFBzfv4ejI6Ogc/nhxs3huHLxiawkY2yIbbcnDx07GC0pr9oFOg8E5GX/xp4vTc1xWtxfHw6YIbx4qUOyHbnS5URyD2TNf0lnmLtkZiY+yguh2ss+SvuAvD7RzUFr8QpXGqymY6OLnBu3MQrQ/w2m+1xnmptgTNXw5ImpWRAT+91TaGrodrMqbYzykFgtJKDZoFWYZ4jJoGeMVnJYZZTEHKe5hL+O9hs4azdZQkPHGzQFPggHBubUsyUVtTwqoQnGhqxCE7K5UQOg0g8LKA1NXPZyRQpR0buwMeHPgOLzRki2mxzgGDPBMvSI5uNifQCpfQRLuvBgTPyAwtUVbNPU1QkrN//kSLQ7siFPW/VQ3dPf2BsYmImUK1z53+Dsl21S0yRWxGbkXtG87HWZYIiZba7MCCsvGovCp9dNj41fVdZft29/ZCZu0UxY0yml7m01UPq4FKAy509yxJGyqt9Xmj78eyKPUi9l7zeIchyFShmNoikkEsMj8rKyoexhG6sxEV8CZuW9HKqIwdq394Pff1ezcTRJjM57L+lmOnruw5JtgxuhsxwudqwWulTeBc6L4vXojU1AxoPH9VMHm2qGyljTd27QR3hGqnBQJ/Ajd0tP/h6aRV8f/InuPJHH/za3gUNn38DjmyPEuiXC+2ayaPJubnFECOdXT3s9JI0WOnXXHoosBEdYg+wJtXU3KIZmM0Qu9nSLA/0D/g0n4k21UYYBXtWwAhO+iUuPQiLxf4MDgQug9FoetEku0GrjaRluKSKCOQalx8EbuxCNiimZQVOC62A8aLaBGO2SzqKceIbufwg0MiHbHBbSZlmsHhx6R4ZGBgEUV5aIi3m8oPA46yBDZaW79EMGC/KXV7mt83HpWWF3JBEnufyg8CK1LHBnLwizYDxIvt3QTbBmqJr01ZuhPRw6aHAa7NFdtr++xXNoLHm5ORsSDX2vXdAqQbuD8Klh4JdxHDQyx7Ky98O4xPTmsFjxdnZBRgauqlUov794CUTT6tjKPkhSbkG0IgdH/xHNhOvykxPz4MPTQwO+uDod63gyS9WVYJ2ssbNJYcHmnlDNsOY4ykKNMDq2vo1Z1XNO1BRXQc7y3ZDwbYd6o8UEgXasioTMtAMxfL5QoLEkwIZNCTTTHaZ5RJXD/axwWxNT5M+f9IjeKqdihXxRDqBPz/FvBVo4gWUE34/6NChQ4cOHTp0rFckJPwL4qQcu4ZL4ykAAAAASUVORK5CYII=" />
   <title>أنظمة غيمة - Cloud Systems - شكرًا لك</title>
@@ -23,20 +24,177 @@
       <li>
         <a href="index.html">الرئيسيّة</a>
       </li>
+      <li>
+        <a id="logout" href="#">تسجيل الخروج</a>
+      </li>
     </ul>
   </nav>
   <div class="container">
-    <div class="logo">
-      <a href="index.html">
-        <img src="data:image/png;base64,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">
-      </a>
+    <div id="not-logged-in-yet">
+      لم تقم بتسجيل الدخول بعد. <a id="login" href="#">تسجيل الدخول</a>.
     </div>
-    <div class="breif">
-      <strong>شكرًا لك:</strong> سنقوم بمراجعة طلبك والردّ عليك في أقرب وقتٍ ممكن. 
+    <div id="invalid-login">
+      تأكّد من توثيق البريد الإلكتروني للعضويّة من خلال اتّباع التعليمات التي أُرسلت إلى بريدك الإلكتروني. تأكّد كذلك من كون العضويّة مسجّلة في برنامج التدريب الجاري. حاول أخيرًا مسح ملفات تعريف الارتباط (Cookies) وسجّل الدخول مرّةً أخرى بعد توثيق البريد الإلكتروني.
+    </div>
+    <div id="not-verified-email">
+      تمّ إرسال رسالة طلب تفعيل البريد الإلكتروني إلى بريدك الإلكتروني، الرجاء تفعيل البريد الإلكتروني من خلال تنفيذ ما ورد فيها.
+    </div>
+    <div id="loading">
+      لحظات من فضلك...
+    </div>
+    <div id="logged-as-contributor">
+      <img id="contributor-picture" src="" />
+      <h3 id="contributor-fullname">أحمد العجمي </h3><small>(مُساهِم)</small>
+      <a id="contributor-email" href="#">a.alajmi@gmail.com</a>
+    </div>
+    <div id="logged-as-trainee">
+      <img id="trainee-picture" src="" />
+      <h3 id="trainee-fullname">أحمد العجمي </h3><small>(مُساهِم)</small>
+      <a id="trainee-email" href="#">a.alajmi@gmail.com</a>
     </div>
     <div class="copyrights">
       (ح) جميع الحقوق محفوظة لمؤسّسة أنظمة غيمة (Cloud Systems).
     </div>
   </div>
+  <script type="text/javascript">
+
+    // TODO: Verify email.
+    var notLoggedInYet = document.getElementById('not-logged-in-yet');
+    var invalidLogin = document.getElementById('invalid-login');
+    var notVerifiedEmail = document.getElementById('not-verified-email');
+    var loading = document.getElementById('loading');
+    var loggedAsContributor = document.getElementById('logged-as-contributor');
+    var loggedAsTrainee = document.getElementById('logged-as-trainee');
+    var logout = document.getElementById('logout');
+    var login = document.getElementById('login');
+    var contributorPicture = document.getElementById('contributor-picture');
+    var contributorFullname = document.getElementById('contributor-fullname');
+    var contributorEmail = document.getElementById('contributor-email');
+    var traineePicture = document.getElementById('trainee-picture');
+    var traineeFullname = document.getElementById('trainee-fullname');
+    var traineeEmail = document.getElementById('trainee-email');
+
+    // Hide the error message initially.
+    notLoggedInYet.style.display = 'none';
+    invalidLogin.style.display = 'none';
+    notVerifiedEmail.style.display = 'none';
+    loading.style.display = 'none';
+    loggedAsContributor.style.display = 'none';
+    loggedAsTrainee.style.display = 'none';
+
+    // Initializing our Auth0Lock
+    var options = {
+      theme: {
+        logo: 'https://avatars3.githubusercontent.com/u/30606298?s=150&v=4',
+      },
+      languageDictionary: {
+        title: 'CloudSystems'
+      },
+    };
+    var lock = new Auth0Lock(
+      'I6A29coC25s2hH-QBMfmMLdyiGQJ3gZ1',
+      'cloudsystems.auth0.com',
+      options
+    );
+
+    // Listening for the authenticated event
+    lock.on("authenticated", function(authResult) {
+      lock.getUserInfo(authResult.accessToken, function(error, profile) {
+        if (error) {
+          return localStorage.removeItem('accessToken');
+        }
+        localStorage.setItem('accessToken', authResult.accessToken);
+        window.location.reload();
+      });
+    });
+
+    document.getElementById('logout').addEventListener('click', function() {
+      localStorage.removeItem('accessToken');
+      lock.logout({
+        returnTo: window.location.href,
+      });
+    });
+
+    document.getElementById('login').addEventListener('click', function() {
+      lock.show();
+    });
+
+    function handleUI() {
+      var accessToken = localStorage.getItem('accessToken');
+      if (!accessToken) {
+        logout.style.display = 'none';
+        notLoggedInYet.style.display = 'block';
+        return lock.show();
+      }
+      logout.style.display = 'block';
+      checkIfContributor(accessToken);
+    }
+
+    function checkIfContributor(accessToken) {
+      var http = new XMLHttpRequest();
+      var url = 'https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/auth/contributors';
+
+      loading.style.display = 'block';
+      http.onreadystatechange = function() {
+        if (http.readyState == XMLHttpRequest.DONE) {
+          loading.style.display = 'none';
+          if (http.status == 200) {
+            var response = JSON.parse(http.response);
+            // contributorPicture.src = response.picture;
+            // contributorFullname.innerHTML = response.fullname;
+            // contributorEmail.innerHTML = response.email;
+            // loggedAsContributor.style.display = 'block';
+            var redirectUri = localStorage.getItem('redirectUri');
+            window.location.href = redirectUri;
+          } else {
+            checkIfTrainee(accessToken);
+          }
+        }
+      }
+
+      http.open('GET', url);
+
+      // Set some headers.
+      http.setRequestHeader('Content-type', 'application/json');
+      http.setRequestHeader('Accept', 'application/json');
+      http.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+      http.send();
+    }
+
+    function checkIfTrainee(accessToken) {
+      var http = new XMLHttpRequest();
+      var url = 'https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/auth/trainees';
+
+      loading.style.display = 'block';
+      http.onreadystatechange = function() {
+        if (http.readyState == XMLHttpRequest.DONE) {
+          loading.style.display = 'none';
+          if (http.status == 200) {
+            var response = JSON.parse(http.response);
+            // traineePicture.src = response.picture;
+            // traineeFullname.innerHTML = response.fullname;
+            // traineeEmail.innerHTML = response.email;
+            // loggedAsTrainee.style.display = 'block';
+            // loggedAsContributor.style.display = 'none';
+            var redirectUri = localStorage.getItem('redirectUri');
+            window.location.href = redirectUri;
+          } else {
+            invalidLogin.style.display = 'block';
+          }
+        }
+      }
+
+      http.open('GET', url);
+
+      // Set some headers.
+      http.setRequestHeader('Content-type', 'application/json');
+      http.setRequestHeader('Accept', 'application/json');
+      http.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+      http.send();
+    }
+
+    handleUI();
+
+  </script>
 </body>
 </html>

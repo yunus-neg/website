@@ -266,6 +266,11 @@ h2, strong, h3{
   width: 100%;
 }
 
+#contributor-picture, #trainee-picture{
+  float: right; width: 48px;
+  margin-left: 6px;
+}
+
 /* For large screens. */
 @media (min-width: 768px){
   .container {
