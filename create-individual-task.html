@@ -112,6 +112,8 @@
 
     redirectToProfileIfNotLoggedIn();
 
+    // TODO: Remove the values.
+
     // Define some variables.
     var accessToken = localStorage.getItem('accessToken');
     var errorMessage = document.getElementById('error-message');
@@ -173,6 +175,9 @@
         edit.style.display = 'inline-block';
         if (http.status == 400) {
           errorMessage.innerHTML = 'الرجاء التأكّد من تعبئة الحقول المطلوبة بالشكل الصحيح.';
+        }
+        if (http.status == 404) {
+          errorMessage.innerHTML = 'الرجاء التأكّد من صحّة البريد الإلكتروني للمُرشدين ومن تسجيلهم في البرنامج.';
         }
         if (http.status == 401) {
           errorMessage.innerHTML = 'لا يُمكن الوصول إلى هذه الصفحة.';
