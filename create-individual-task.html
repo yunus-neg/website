@@ -114,6 +114,7 @@
     redirectToProfileIfNotLoggedIn();
 
     // Define some variables.
+    var accessToken = localStorage.getItem('accessToken');
     var errorMessage = document.getElementById('error-message');
     var form = document.getElementById('form');
     var title = document.getElementById('title');
@@ -160,26 +161,28 @@
     }
 
     // Define variables to be used to send a request.
-    // var http = new XMLHttpRequest();
-    // var url = 'https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/contact-us';
+    var http = new XMLHttpRequest();
+    var url = 'https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/contact-us';
 
-    // http.onreadystatechange = function() {
-    //   if (http.readyState == XMLHttpRequest.DONE) {
-    //     submit.disabled = false;
-    //     if (http.status == 204) {
-    //       return window.location.href = 'thank-you-for-contacting-us.html';
-    //     }
-    //     errorMessage.style.display = 'block';
-    //     if (http.status == 400) {
-    //       errorMessage.innerHTML = 'الرجاء التأكّد من تعبئة الحقول المطلوبة.';
-    //     }
-    //     if (http.status == 406) {
-    //       errorMessage.innerHTML = 'الرجاء التأكّد من إدخال بريد إلكترونيّ صحيح.';
-    //     }
-    //     if (http.status == 408) {
-    //       errorMessage.innerHTML = 'لا يُمكن إرسال البريد الآن، نرجو المحاولة لاحقًا.';
-    //     }
-    //   }
+    http.onreadystatechange = function() {
+      if (http.readyState == XMLHttpRequest.DONE) {
+        submit.disabled = false;
+        if (http.status == 204) {
+          return window.location.href = 'thank-you-for-creating-task.html';
+        }
+        errorMessage.style.display = 'block';
+        edit.style.display = 'inline-block';
+        if (http.status == 400) {
+          errorMessage.innerHTML = 'الرجاء التأكّد من تعبئة الحقول المطلوبة بالشكل الصحيح.';
+        }
+        if (http.status == 401) {
+          errorMessage.innerHTML = 'لا يُمكن الوصول إلى هذه الصفحة.';
+        }
+        if (http.status == 408) {
+          errorMessage.innerHTML = 'لا يُمكن إضفاة المهمّة الآن، نرجو المحاولة لاحقًا.';
+        }
+      }
+    }
 
     var handlePreview = function(event) {
       if (form.checkValidity() == false) return;
@@ -219,24 +222,29 @@
 
     var handleSubmit = function(event) {
       event.preventDefault();
-      // submit.disabled = true;
+      edit.style.display = 'none';
+      submit.disabled = true;
       errorMessage.style.display = 'none';
 
-      // http.open('POST', url, true);
+      http.open('POST', url, true);
 
-      // // Set some headers.
-      // http.setRequestHeader('Content-type', 'application/json');
-      // http.setRequestHeader('Accept', 'application/json');
+      // Set some headers.
+      http.setRequestHeader('Content-type', 'application/json');
+      http.setRequestHeader('Accept', 'application/json');
+      http.setRequestHeader('Authorization', 'Bearer ' + accessToken);
 
-      // // Make a new request.
-      // var params = JSON.stringify({
-      //   'name': fullname.value,
-      //   'email': email.value,
-      //   'subject': subject.value,
-      //   'message': message.value,
-      // });
+      // Make a new request.
+      var params = JSON.stringify({
+        'title': title.value,
+        'feedback': feedback.value,
+        'description': description.value,
+        'mentors': mentors.value,
+        'skill': skill.value,
+        'channel': channel.value,
+        'expiresAfter': expiresAfter.value,
+      });
 
-      // http.send(params);
+      http.send(params);
     }
 
     // Start dealing with them.
