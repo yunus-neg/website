@@ -52,7 +52,7 @@
             <span id="references-preview">references</span>
             في حال رغبت بتسليم المهمّة، تفضّل بزيارة الرابط:<br />
             <a href="#">https://cloudsystems.sa/individual-tasks/e0cac4ee-98f3-4c23-acd8-f12985a15573/deliver</a><br /><br />
-            وفي حال احتجت لمساعدةٍ فلا تتواني بالبحث عنها في قناة المسار #<span id="channel-preview">channel</span> في تطبيق Slack.<br /><br />
+            وفي حال احتجت لمساعدةٍ فلا تتواني بالبحث عنها في قناة المسار <span id="channel-preview">channel</span> في تطبيق Slack.<br /><br />
             كلّ الحظّ النبيل.<br />
             مؤسّسة أنظمة غيمة (Cloud Systems).<br /><br />
           </div>
@@ -197,8 +197,8 @@
       submit.style.display = 'inline-block';
       edit.style.display = 'inline-block';
       titlePreview.innerHTML = title.value;
-      feedbackPreview.innerHTML = (feedback.value == '') ? '' : feedback.value + '<br /><br />';
-      descriptionPreview.innerHTML = description.value + '<br /><br />';
+      feedbackPreview.innerHTML = (feedback.value == '') ? '' : feedback.value.replace(/(?:\r\n|\r|\n)/g, '<br />') + '<br /><br />';
+      descriptionPreview.innerHTML = description.value.replace(/(?:\r\n|\r|\n)/g, '<br />') + '<br /><br />';
       expiresAfterPreview.innerHTML = expiresAfter.value;
       channelPreview.innerHTML = channel.value;
       if (references.value == '') {
