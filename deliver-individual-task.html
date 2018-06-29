@@ -108,10 +108,15 @@
       var list = [];
       match = regex.exec(answers);
       while (match != null) {
-        list.push({
-          title: match[1],
-          url: match[2],
-        });
+        if (!match[1] || !match[2] || match[1] == '' || match[2] == '') {
+          // Don't do anything.
+        }
+        else {
+          list.push({
+            title: match[1],
+            url: match[2],
+          });
+        }
         match = regex.exec(answers);
       }
       return list;
