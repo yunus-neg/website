@@ -105,6 +105,9 @@
         if (http.status == 408) {
           errorMessage.innerHTML = 'لا يُمكن إرسال البريد الآن، نرجو المحاولة لاحقًا.';
         }
+        if (http.status == 401) {
+          errorMessage.innerHTML = 'لا يُمكن الوصول إلى هذه الصفحة.';
+        }
       }
     }
 
