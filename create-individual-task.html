@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="hanadi.css" />
   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS5SURBVGhD7VhbT1xVFEYfjA8an0xM1MQ/4Ksm+sBD58acw8DA3jNcLMzItOWSthJMiwIFWrAYi1qTqrUxwXgjFkNbW6SWak1Te1GkUIECLdOBKaXlDgWsNS7XnrPPmTNwhtBxmCHmfMkXCPuctb5vr7332pwEHTp06NChQ4eO/zESKX3MIBCbUSTlRpF+YBRII/7+iUkku02iI9ViIU/yR9cnjMmOl1HwcRT/p0mksALvo6kTRjHdxF9dHzClOJ9lwtRizckO8BQUw443q6Gsci+U7NwF7s1bA39XP2cSyGlzivM5Hip+YLOKVbgjC9tcVAItrafh9u0JWFy8r3Byag6Ghkeg9+oAfPFVE7y6ZbtiBt+fYUuRh4w9AvtAIH8zMXaHC062/QwLC3+FGFBzfv4ejI6Ogc/nhxs3huHLxiawkY2yIbbcnDx07GC0pr9oFOg8E5GX/xp4vTc1xWtxfHw6YIbx4qUOyHbnS5URyD2TNf0lnmLtkZiY+yguh2ss+SvuAvD7RzUFr8QpXGqymY6OLnBu3MQrQ/w2m+1xnmptgTNXw5ImpWRAT+91TaGrodrMqbYzykFgtJKDZoFWYZ4jJoGeMVnJYZZTEHKe5hL+O9hs4azdZQkPHGzQFPggHBubUsyUVtTwqoQnGhqxCE7K5UQOg0g8LKA1NXPZyRQpR0buwMeHPgOLzRki2mxzgGDPBMvSI5uNifQCpfQRLuvBgTPyAwtUVbNPU1QkrN//kSLQ7siFPW/VQ3dPf2BsYmImUK1z53+Dsl21S0yRWxGbkXtG87HWZYIiZba7MCCsvGovCp9dNj41fVdZft29/ZCZu0UxY0yml7m01UPq4FKAy509yxJGyqt9Xmj78eyKPUi9l7zeIchyFShmNoikkEsMj8rKyoexhG6sxEV8CZuW9HKqIwdq394Pff1ezcTRJjM57L+lmOnruw5JtgxuhsxwudqwWulTeBc6L4vXojU1AxoPH9VMHm2qGyljTd27QR3hGqnBQJ/Ajd0tP/h6aRV8f/InuPJHH/za3gUNn38DjmyPEuiXC+2ayaPJubnFECOdXT3s9JI0WOnXXHoosBEdYg+wJtXU3KIZmM0Qu9nSLA/0D/g0n4k21UYYBXtWwAhO+iUuPQiLxf4MDgQug9FoetEku0GrjaRluKSKCOQalx8EbuxCNiimZQVOC62A8aLaBGO2SzqKceIbufwg0MiHbHBbSZlmsHhx6R4ZGBgEUV5aIi3m8oPA46yBDZaW79EMGC/KXV7mt83HpWWF3JBEnufyg8CK1LHBnLwizYDxIvt3QTbBmqJr01ZuhPRw6aHAa7NFdtr++xXNoLHm5ORsSDX2vXdAqQbuD8Klh4JdxHDQyx7Ky98O4xPTmsFjxdnZBRgauqlUov794CUTT6tjKPkhSbkG0IgdH/xHNhOvykxPz4MPTQwO+uDod63gyS9WVYJ2ssbNJYcHmnlDNsOY4ykKNMDq2vo1Z1XNO1BRXQc7y3ZDwbYd6o8UEgXasioTMtAMxfL5QoLEkwIZNCTTTHaZ5RJXD/axwWxNT5M+f9IjeKqdihXxRDqBPz/FvBVo4gWUE34/6NChQ4cOHTp0rFckJPwL4qQcu4ZL4ykAAAAASUVORK5CYII=" />
   <title>أنظمة غيمة - Cloud Systems - إضافة مهمّة فرديّة</title>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56731261-3"></script>
@@ -27,6 +28,7 @@
       <li>
         <a href="index.html">الرئيسيّة</a>
       </li>
+      <li id="user-email"></li>
     </ul>
   </nav>
   <div class="container">
@@ -111,11 +113,18 @@
   <script type="text/javascript">
 
     redirectToProfileIfNotLoggedIn();
+    updateLoginBox();
 
-    // TODO: Remove the values.
+    function updateLoginBox() {
+      var userEmail = document.getElementById('user-email');
+      var cookiesEmail = Cookies.get('email');
+      if (cookiesEmail) {
+        userEmail.innerHTML = '<a href="profile.html">' + cookiesEmail + '</a>';
+      }
+    }
 
     // Define some variables.
-    var accessToken = localStorage.getItem('accessToken');
+    var accessToken = Cookies.get('accessToken');
     var errorMessage = document.getElementById('error-message');
     var form = document.getElementById('form');
     var title = document.getElementById('title');

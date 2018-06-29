@@ -1,8 +1,8 @@
-
 function redirectToProfileIfNotLoggedIn() {
-  var accessToken = localStorage.getItem('accessToken');
+  var accessToken = Cookies.get('accessToken'); // => 'value'//localStorage.getItem('accessToken');
   if (!accessToken) {
-    localStorage.setItem('redirectUri', window.location.href);
+    // TODO: Encode the URI.
+    Cookies.set('redirectUri', window.location.href);
     window.location.href = 'profile.html';
   }
 }
