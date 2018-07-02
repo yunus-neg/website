@@ -82,8 +82,33 @@
   </div>
   <script type="text/javascript">
 
-    redirectToProfileIfNotLoggedIn();
-    updateLoginBox();
+  // redirectToProfileIfNotLoggedIn();
+  checkIfLoginOrNot();
+
+  function checkIfLoginOrNot() {
+    var accessToken = Cookies.get('accessToken');
+    if (!accessToken) {
+      return redirectToLogin();
+    } else {
+      $.ajax('https://d2hbxkrooc.execute-api.eu-west-1.amazonaws.com/dev/auth/trainees', {
+        headers: {
+          'Authorization': 'Bearer ' + accessToken,
+        },
+        success: function(data) {
+          console.log('success', data);
+          updateLoginBox();
+        },
+        error: function(data) {
+          return redirectToLogin();
+        }
+      });
+    }
+  }
+
+  function redirectToLogin() {
+    Cookies.set('redirectUri', window.location.href);
+    window.location.href = 'profile.html';
+  }
 
   var userAnswers = [];
   var answers = '';
@@ -148,22 +173,6 @@
         });
       }
       return list;
-      // var regex = /\-\s(.*)\s\((.*)\)\./g;
-      // var list = [];
-      // match = regex.exec(answers);
-      // while (match != null) {
-      //   if (!match[1] || !match[2] || match[1] == '' || match[2] == '') {
-      //     // Don't do anything.
-      //   }
-      //   else {
-      //     list.push({
-      //       title: match[1],
-      //       url: match[2],
-      //     });
-      //   }
-      //   match = regex.exec(answers);
-      // }
-      // return list;
     }
 
     // Define variables to be used to send a request.
