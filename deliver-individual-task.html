@@ -10,6 +10,15 @@
   <title>أنظمة غيمة - Cloud Systems - إضافة مهمّة فرديّة</title>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
+
+  <script
+    src="https://code.jquery.com/jquery-1.8.3.min.js"
+    integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8="
+    crossorigin="anonymous"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56731261-3"></script>
   <script>
@@ -51,11 +60,14 @@
           </div>
         </div>
         <div id="edit-mode">
+          <div id="jsGrid"></div>
+        <!--
         <div class="form-input">
           <label for="answers">الإجابات (مطلوب)</label>
           <p>تأكّد من أن تبدأ كلّ إجابة في سطر جديد بعد علامة الناقص "-"، ثم مسافة ثم عبارات تصف بها الإجابة ثم مسافة ثم بين قوسين ضع رابط الإجابة ثم نقطة لإنهاء الإجابة وهكذا مع بقيّة الإجابات. الرابط لكل إجابة قد يكون رابط فيديو في Youtube، أو رابط ملف مُستندات Google، أو غيرها. المهم في الرابط أن يكون يُمكن الوصول إليه من قِبل المُرشدين، وإلاّ فسيتم اعتبار الإجابة غير صحيحية.</p>
-<textarea id="answers" placeholder="- الإجابة 1 (URL1)." required></textarea>
+          <textarea id="answers" placeholder="- الإجابة 1 (URL1)." required></textarea>
         </div>
+        -->
         </div>
         <div class="form-buttons">
           <button id="preview" class="submit">عاين الإجابة</button>
@@ -72,6 +84,30 @@
 
     redirectToProfileIfNotLoggedIn();
     updateLoginBox();
+
+  var userAnswers = [];
+  var answers = '';
+ 
+  $(function() {
+    $('#jsGrid').jsGrid({
+      width: '100%',
+      height: '300px',
+      inserting: true,
+      editing: true,
+      sorting: true,
+      paging: true,
+      
+      data: userAnswers,
+      confirmDeleting: false,
+      noDataContent: 'لم يتم إضافة إجابات حتّى الآن.',
+
+      fields: [
+        { name: 'عنوان الإجابة', type: 'text', validate: 'required' },
+        { name: 'رابط الإجابة (URL)', type: 'text', validate: 'required' },
+        { type: 'control' },
+      ]
+    });
+  });
 
     function updateLoginBox() {
       var userEmail = document.getElementById('user-email');
@@ -104,22 +140,30 @@
     edit.style.display = 'none';
 
     function parseAnswers(answers) {
-      var regex = /\-\s(.*)\s\((.*)\)\./g;
       var list = [];
-      match = regex.exec(answers);
-      while (match != null) {
-        if (!match[1] || !match[2] || match[1] == '' || match[2] == '') {
-          // Don't do anything.
-        }
-        else {
-          list.push({
-            title: match[1],
-            url: match[2],
-          });
-        }
-        match = regex.exec(answers);
+      for (var i=0; i<answers.length; i++) {
+        list.push({
+          title: answers[i]['عنوان الإجابة'],
+          url: answers[i]['رابط الإجابة (URL)'],
+        });
       }
       return list;
+      // var regex = /\-\s(.*)\s\((.*)\)\./g;
+      // var list = [];
+      // match = regex.exec(answers);
+      // while (match != null) {
+      //   if (!match[1] || !match[2] || match[1] == '' || match[2] == '') {
+      //     // Don't do anything.
+      //   }
+      //   else {
+      //     list.push({
+      //       title: match[1],
+      //       url: match[2],
+      //     });
+      //   }
+      //   match = regex.exec(answers);
+      // }
+      // return list;
     }
 
     // Define variables to be used to send a request.
@@ -164,7 +208,7 @@
       submit.style.display = 'inline-block';
       edit.style.display = 'inline-block';
 
-      var parsedAnswers = parseAnswers(answers.value);
+      var parsedAnswers = parseAnswers(userAnswers);
       var answersPreviewHTML = '';
 
       if (parsedAnswers.length == 0) {
@@ -174,8 +218,11 @@
         submit.style.display = 'inline-block';
       }
 
+      answers = '';
+
       for (var i = 0; i < parsedAnswers.length; i++) {
         answersPreviewHTML += '- ' + parsedAnswers[i].title + ' (<a href="#">' + parsedAnswers[i].url + '</a>).<br />';
+        answers += '- ' + parsedAnswers[i].title + ' (' + parsedAnswers[i].url + ').\n';
       }
       answersPreviewHTML += '<br />';
       answersPreview.innerHTML = answersPreviewHTML;
@@ -206,7 +253,7 @@
       // Make a new request.
       var params = JSON.stringify({
         'id': id,
-        'answers': answers.value,
+        'answers': answers,
       });
 
       http.send(params);
