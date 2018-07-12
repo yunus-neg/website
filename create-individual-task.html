@@ -10,6 +10,15 @@
   <title>أنظمة غيمة - Cloud Systems - إضافة مهمّة فرديّة</title>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
+
+  <script
+    src="https://code.jquery.com/jquery-1.8.3.min.js"
+    integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8="
+    crossorigin="anonymous"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56731261-3"></script>
   <script>
@@ -87,9 +96,10 @@
         </div>
         <div class="form-input">
           <label for="references">المراجع (إن وُجد)</label>
-          <p>في حال وجود مراجع؛ تأكّد من أن يبدأ كلّ مرجع في سطر جديد بعد علامة الناقص "-"، ثم مسافة ثم عبارات تصف بها المرجع، ثم مسافة ثم بين قوسين ضع رابط المرجع، ثم نقطة لإنهاء المرجع، وهكذا مع بقيّة المراجع.</p>
-          <textarea id="references" placeholder="- المرجع 1 (URL1)."></textarea>
+          <!-- <p>في حال وجود مراجع؛ تأكّد من أن يبدأ كلّ مرجع في سطر جديد بعد علامة الناقص "-"، ثم مسافة ثم عبارات تصف بها المرجع، ثم مسافة ثم بين قوسين ضع رابط المرجع، ثم نقطة لإنهاء المرجع، وهكذا مع بقيّة المراجع.</p>
+          <textarea id="references" placeholder="- المرجع 1 (URL1)."></textarea> -->
         </div>
+        <div id="jsGrid"></div>
         <div class="form-input">
           <label for="channel">قناة Slack (مطلوب)</label>
           <input type="text" id="channel" placeholder="developer" required />
@@ -122,6 +132,30 @@
         userEmail.innerHTML = '<a href="profile.html">' + cookiesEmail + '</a>';
       }
     }
+
+  var userReferences = [];
+  var references = '';
+ 
+  $(function() {
+    $('#jsGrid').jsGrid({
+      width: '100%',
+      height: '300px',
+      inserting: true,
+      editing: true,
+      sorting: true,
+      paging: true,
+      
+      data: userReferences,
+      confirmDeleting: false,
+      noDataContent: 'لم يتم إضافة مراجع حتّى الآن.',
+
+      fields: [
+        { name: 'عنوان المرجع', type: 'text', validate: 'required' },
+        { name: 'رابط المرجع (URL)', type: 'text', validate: 'required' },
+        { type: 'control' },
+      ]
+    });
+  });
 
     // Define some variables.
     var accessToken = Cookies.get('accessToken');
@@ -157,15 +191,12 @@
     edit.style.display = 'none';
 
     function parseReferences(references) {
-      var regex = /\-\s(.*)\s\((.*)\)\./g;
       var list = [];
-      match = regex.exec(references);
-      while (match != null) {
+      for (var i=0; i<references.length; i++) {
         list.push({
-          title: match[1],
-          url: match[2],
+          title: references[i]['عنوان المرجع'],
+          url: references[i]['رابط المرجع (URL)'],
         });
-        match = regex.exec(references);
       }
       return list;
     }
@@ -210,18 +241,22 @@
       descriptionPreview.innerHTML = description.value.replace(/(?:\r\n|\r|\n)/g, '<br />') + '<br /><br />';
       expiresAfterPreview.innerHTML = expiresAfter.value;
       channelPreview.innerHTML = channel.value;
-      if (references.value == '') {
+
+      var parsedReferences = parseReferences(userReferences);
+      var referencesPreviewHTML = '';
+
+      if (parsedReferences.length == 0) {
         referencesPreview.innerHTML = '';
       } else {
-        var parsedReferences = parseReferences(references.value);
-        console.log(parsedReferences);
-        var referencesPreviewHTML = 'المراجع:<br />';
+        referencesPreviewHTML = 'المراجع:<br />';
         for (var i = 0; i < parsedReferences.length; i++) {
           referencesPreviewHTML += '<br />- ' + parsedReferences[i].title + ' (<a href="#">' + parsedReferences[i].url + '</a>).';
+          references += '- ' + parsedReferences[i].title + ' (' + parsedReferences[i].url + ').\n';
         }
         referencesPreviewHTML += '<br /><br />';
-        referencesPreview.innerHTML = referencesPreviewHTML;
       }
+
+      referencesPreview.innerHTML = referencesPreviewHTML;
     }
 
     var handleEdit = function(event) {
@@ -255,7 +290,7 @@
         'skill': skill.value,
         'channel': channel.value,
         'expiresAfter': expiresAfter.value,
-        'references': references.value,
+        'references': references,
       });
 
       http.send(params);
