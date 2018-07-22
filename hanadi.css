@@ -288,7 +288,7 @@ h2, strong, h3{
 }
 
 /* For small screens. */
-@media (max-width: 400px){
+@media (max-width: 500px){
   .logo{
     padding: 30px;
     padding-bottom: 10px;
